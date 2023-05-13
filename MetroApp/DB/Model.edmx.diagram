@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9cd4c1c3336547edab230a1178368a1c" Name="Diagram1">
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Area" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.City" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Construction" Width="1.5" PointX="5.25" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Decade" Width="1.5" PointX="9.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Depot" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.DepotLine" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.DepthType" Width="1.5" PointX="7.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.District" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Floor" Width="1.5" PointX="5.25" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.HallPhoto" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.HousingCost" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.LineHistory" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.LineObject" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Location" Width="1.5" PointX="5.25" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Map" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Peculiarity" Width="1.5" PointX="7.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.PhotoAngle" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Pillar" Width="1.5" PointX="5.25" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Platform" Width="1.5" PointX="7.5" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Span" Width="1.5" PointX="3" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.State" Width="1.5" PointX="7.5" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.StationHistory" Width="1.5" PointX="12" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.StationObject" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.StationPhoto" Width="1.5" PointX="12" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Status" Width="1.5" PointX="9.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.StructuralComplex" Width="1.5" PointX="7.5" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TrafficDescription" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TrafficType" Width="1.5" PointX="7.5" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.Train" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TrainSeries" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TransferHistory" Width="1.5" PointX="17.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TransferObject" Width="1.5" PointX="15" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MetroDB_VKR_Model.TransferType" Width="1.5" PointX="15" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_Area_District" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_City_Map" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_District_City" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StructuralComplex_Construction" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_LineHistory_Decade" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationHistory_Decade" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_DepotLine_Depot" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_DepotLine_LineObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_DepthType" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StructuralComplex_Floor" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationPhoto_PhotoComment" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_HousingCost" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_LineHistory_LineObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_LineObject_Map" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationHistory_LineObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StructuralComplex_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationPhoto_PhotoAngle" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_Pillar_Span" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StructuralComplex_Pillar" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_Platform" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_State" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TransferObject_State" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationHistory_StationObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationHistory_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_StructuralComplex" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationObject_TrafficType" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_StationPhoto_StationObject1" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TransferObject_StationObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TransferObject_StationObject1" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_Train_Series" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TransferHistory_TransferObject" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TransferHistory_TransferType" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.PeculiarityStation" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.StationArea" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.TrainLine" ManuallyRouted="false" />
+        <AssociationConnector Association="MetroDB_VKR_Model.FK_TrafficType_TrafficDescription" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

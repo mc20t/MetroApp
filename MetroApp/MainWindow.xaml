@@ -1,0 +1,81 @@
+﻿<Window x:Class="MetroApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetroApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Height="650" Width="1000">
+    <Grid Background="CornflowerBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="285*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="113*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/Images/logo.png"
+               Margin="0 0 0 10"/>
+        <TextBlock Name="q"
+                   FontSize="25"
+                   Text="something"
+                   Grid.Column="1"
+                   Foreground="White"
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <TextBlock x:Name="ActivityTitle"
+                   FontSize="25"
+                   Text="Меню"
+                   Grid.Column="2"
+                   Foreground="White"
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <ComboBox x:Name="cmbMap"
+                  Height="25"
+                  Width="150"
+                  Grid.Column="3"
+                  HorizontalAlignment="Center"
+                  SelectionChanged="cmbMap_SelectionChanged"/>
+        <DatePicker Name="dpDate"
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+        <StackPanel Background="#FF404040"
+                    Grid.Row="1">
+            <Button Name="Menu"
+                    Height="50"
+                    Content="Меню"
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"
+                    Click="Menu_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="4"
+                    Background="#FF404040"
+                    Grid.Row="1">
+            <Button Name="Editor"
+                    Height="50"
+                    Content="Редакор"
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"
+                    Click="Editor_Click"/>
+        </StackPanel>
+
+        <Frame Name="mainFrame"
+               Grid.Column="1"
+               Grid.ColumnSpan="3"
+               Grid.Row="1"
+               Grid.RowSpan="2"/>
+    </Grid>
+</Window>
