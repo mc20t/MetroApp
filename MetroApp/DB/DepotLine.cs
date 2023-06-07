@@ -15,8 +15,6 @@ namespace MetroApp.DB
     public partial class DepotLine
     {
         public byte ID { get; set; }
-        public byte DepotID { get; set; }
-        public short LineObjectID { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
     

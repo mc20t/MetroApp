@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MetroDB_VKR_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MetroDB_VKRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="FUNC_LineHistory_Result">
+    <Property Name="LINE_NUMBER" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LINE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LINE_ABBR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_MOD_DATE" Type="DateTime" />
+    <Property Name="LINE_COLOR" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="LINE_LENGTH" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="TRAVEL_TIME" Type="Int16" />
+    <Property Name="LINE_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_COLOR" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+    <Property Name="MAP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
   <EntityType Name="Area">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DistrictID" Type="Int16" Nullable="false" />
     <NavigationProperty Name="District" Relationship="Self.FK_Area_District" FromRole="Area" ToRole="District" />
     <NavigationProperty Name="StationObject" Relationship="Self.StationArea" FromRole="Area" ToRole="StationObject" />
   </EntityType>
@@ -16,7 +27,6 @@
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MapID" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Map" Relationship="Self.FK_City_Map" FromRole="City" ToRole="Map" />
     <NavigationProperty Name="District" Relationship="Self.FK_District_City" FromRole="City" ToRole="District" />
   </EntityType>
@@ -46,7 +56,7 @@
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="DepotLine" Relationship="Self.FK_DepotLine_Depot" FromRole="Depot" ToRole="DepotLine" />
   </EntityType>
   <EntityType Name="DepotLine">
@@ -54,8 +64,6 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DepotID" Type="Byte" Nullable="false" />
-    <Property Name="LineObjectID" Type="Int16" Nullable="false" />
     <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Depot" Relationship="Self.FK_DepotLine_Depot" FromRole="DepotLine" ToRole="Depot" />
@@ -78,7 +86,6 @@
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Abbreviation" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CityID" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Area" Relationship="Self.FK_Area_District" FromRole="District" ToRole="Area" />
     <NavigationProperty Name="City" Relationship="Self.FK_District_City" FromRole="District" ToRole="City" />
   </EntityType>
@@ -96,7 +103,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="StationPhoto" Relationship="Self.FK_StationPhoto_PhotoComment" FromRole="HallPhoto" ToRole="StationPhoto" />
   </EntityType>
   <EntityType Name="HousingCost">
@@ -114,27 +121,24 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LineObjectID" Type="Int16" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Number" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Abbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="DecadeID" Type="Byte" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Lenght" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="TravelTimeInMinute" Type="Int16" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Decade" Relationship="Self.FK_LineHistory_Decade" FromRole="LineHistory" ToRole="Decade" />
     <NavigationProperty Name="LineObject" Relationship="Self.FK_LineHistory_LineObject" FromRole="LineHistory" ToRole="LineObject" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_LineHistory_Status" FromRole="LineHistory" ToRole="Status" />
   </EntityType>
   <EntityType Name="LineObject">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ClosingDate" Type="DateTime" Precision="0" />
-    <Property Name="MapID" Type="Byte" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="DepotLine" Relationship="Self.FK_DepotLine_LineObject" FromRole="LineObject" ToRole="DepotLine" />
     <NavigationProperty Name="LineHistory" Relationship="Self.FK_LineHistory_LineObject" FromRole="LineObject" ToRole="LineHistory" />
     <NavigationProperty Name="Map" Relationship="Self.FK_LineObject_Map" FromRole="LineObject" ToRole="Map" />
@@ -173,7 +177,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="StationPhoto" Relationship="Self.FK_StationPhoto_PhotoAngle" FromRole="PhotoAngle" ToRole="StationPhoto" />
   </EntityType>
   <EntityType Name="Pillar">
@@ -183,7 +187,6 @@
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Abbreviation" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="SpanID" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Span" Relationship="Self.FK_Pillar_Span" FromRole="Pillar" ToRole="Span" />
     <NavigationProperty Name="StructuralComplex" Relationship="Self.FK_StructuralComplex_Pillar" FromRole="Pillar" ToRole="StructuralComplex" />
   </EntityType>
@@ -195,6 +198,14 @@
     <Property Name="Unilateral" Type="Byte" Nullable="false" />
     <Property Name="Bilateral" Type="Byte" Nullable="false" />
     <NavigationProperty Name="StationObject" Relationship="Self.FK_StationObject_Platform" FromRole="Platform" ToRole="StationObject" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
   </EntityType>
   <EntityType Name="Span">
     <Key>
@@ -223,13 +234,9 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StationObjectID" Type="Int16" Nullable="false" />
-    <Property Name="LineObjectID" Type="Int16" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="DecadeID" Type="Byte" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="StatusID" Type="Byte" Nullable="false" />
-    <Property Name="PossessionID" Type="Byte" />
+    <Property Name="Sequencing" Type="Byte" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Decade" Relationship="Self.FK_StationHistory_Decade" FromRole="StationHistory" ToRole="Decade" />
     <NavigationProperty Name="LineObject" Relationship="Self.FK_StationHistory_LineObject" FromRole="StationHistory" ToRole="LineObject" />
     <NavigationProperty Name="StationObject" Relationship="Self.FK_StationHistory_StationObject" FromRole="StationHistory" ToRole="StationObject" />
@@ -240,18 +247,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PlatformWidth" Type="Byte" />
     <Property Name="PlatformLenght" Type="Int16" />
     <Property Name="HallHeight" Type="Byte" />
     <Property Name="Depth" Type="Decimal" Precision="6" Scale="1" />
-    <Property Name="DepthTypeID" Type="Byte" />
-    <Property Name="StructuralComplexID" Type="Byte" />
-    <Property Name="PlatformID" Type="Byte" />
-    <Property Name="HousingCostID" Type="Byte" Nullable="false" />
-    <Property Name="StateID" Type="Byte" Nullable="false" />
     <Property Name="Traffic" Type="Byte" />
-    <Property Name="TrafficTypeID" Type="Byte" />
     <NavigationProperty Name="DepthType" Relationship="Self.FK_StationObject_DepthType" FromRole="StationObject" ToRole="DepthType" />
     <NavigationProperty Name="HousingCost" Relationship="Self.FK_StationObject_HousingCost" FromRole="StationObject" ToRole="HousingCost" />
     <NavigationProperty Name="Platform" Relationship="Self.FK_StationObject_Platform" FromRole="StationObject" ToRole="Platform" />
@@ -259,9 +260,9 @@
     <NavigationProperty Name="StationHistory" Relationship="Self.FK_StationHistory_StationObject" FromRole="StationObject" ToRole="StationHistory" />
     <NavigationProperty Name="StructuralComplex" Relationship="Self.FK_StationObject_StructuralComplex" FromRole="StationObject" ToRole="StructuralComplex" />
     <NavigationProperty Name="TrafficType" Relationship="Self.FK_StationObject_TrafficType" FromRole="StationObject" ToRole="TrafficType" />
-    <NavigationProperty Name="StationPhoto" Relationship="Self.FK_StationPhoto_StationObject1" FromRole="StationObject" ToRole="StationPhoto" />
-    <NavigationProperty Name="TransferObject" Relationship="Self.FK_TransferObject_StationObject" FromRole="StationObject" ToRole="TransferObject" />
-    <NavigationProperty Name="TransferObject1" Relationship="Self.FK_TransferObject_StationObject1" FromRole="StationObject" ToRole="TransferObject" />
+    <NavigationProperty Name="StationPhoto" Relationship="Self.FK_StationPhoto_StationObject" FromRole="StationObject" ToRole="StationPhoto" />
+    <NavigationProperty Name="TransferObject" Relationship="Self.FK_TransferObject_StationObject1" FromRole="StationObject" ToRole="TransferObject" />
+    <NavigationProperty Name="TransferObject1" Relationship="Self.FK_TransferObject_StationObject2" FromRole="StationObject" ToRole="TransferObject" />
     <NavigationProperty Name="Peculiarity" Relationship="Self.PeculiarityStation" FromRole="StationObject" ToRole="Peculiarity" />
     <NavigationProperty Name="Area" Relationship="Self.StationArea" FromRole="StationObject" ToRole="Area" />
   </EntityType>
@@ -271,12 +272,9 @@
     </Key>
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StationID" Type="Int16" Nullable="false" />
-    <Property Name="PhotoAngleID" Type="Byte" />
-    <Property Name="HallPhotoID" Type="Byte" />
     <NavigationProperty Name="HallPhoto" Relationship="Self.FK_StationPhoto_PhotoComment" FromRole="StationPhoto" ToRole="HallPhoto" />
     <NavigationProperty Name="PhotoAngle" Relationship="Self.FK_StationPhoto_PhotoAngle" FromRole="StationPhoto" ToRole="PhotoAngle" />
-    <NavigationProperty Name="StationObject" Relationship="Self.FK_StationPhoto_StationObject1" FromRole="StationPhoto" ToRole="StationObject" />
+    <NavigationProperty Name="StationObject" Relationship="Self.FK_StationPhoto_StationObject" FromRole="StationPhoto" ToRole="StationObject" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -285,6 +283,7 @@
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="LineHistory" Relationship="Self.FK_LineHistory_Status" FromRole="Status" ToRole="LineHistory" />
     <NavigationProperty Name="StationHistory" Relationship="Self.FK_StationHistory_Status" FromRole="Status" ToRole="StationHistory" />
   </EntityType>
   <EntityType Name="StructuralComplex">
@@ -292,10 +291,6 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LocationID" Type="Byte" Nullable="false" />
-    <Property Name="ConstructionID" Type="Byte" Nullable="false" />
-    <Property Name="FloorID" Type="Byte" Nullable="false" />
-    <Property Name="PillarID" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Construction" Relationship="Self.FK_StructuralComplex_Construction" FromRole="StructuralComplex" ToRole="Construction" />
     <NavigationProperty Name="Floor" Relationship="Self.FK_StructuralComplex_Floor" FromRole="StructuralComplex" ToRole="Floor" />
     <NavigationProperty Name="Location" Relationship="Self.FK_StructuralComplex_Location" FromRole="StructuralComplex" ToRole="Location" />
@@ -317,20 +312,19 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="TrafficType" Relationship="MetroDB_VKR_Model.FK_TrafficType_TrafficDescription" FromRole="TrafficDescription" ToRole="TrafficType" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TrafficType" Relationship="Self.FK_TrafficType_TrafficDescription" FromRole="TrafficDescription" ToRole="TrafficType" />
   </EntityType>
   <EntityType Name="TrafficType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Byte" Nullable="false" />
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Minimum" Type="Byte" Nullable="false" />
     <Property Name="Maximum" Type="Byte" Nullable="false" />
     <Property Name="Color" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="TrafficDescriptionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="StationObject" Relationship="Self.FK_StationObject_TrafficType" FromRole="TrafficType" ToRole="StationObject" />
-    <NavigationProperty Name="TrafficDescription" Relationship="MetroDB_VKR_Model.FK_TrafficType_TrafficDescription" FromRole="TrafficType" ToRole="TrafficDescription" />
+    <NavigationProperty Name="TrafficDescription" Relationship="Self.FK_TrafficType_TrafficDescription" FromRole="TrafficType" ToRole="TrafficDescription" />
   </EntityType>
   <EntityType Name="Train">
     <Key>
@@ -338,7 +332,6 @@
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TrainSeriesID" Type="Byte" Nullable="false" />
     <Property Name="Year" Type="Int16" Nullable="false" />
     <Property Name="Photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TrainSeries" Relationship="Self.FK_Train_Series" FromRole="Train" ToRole="TrainSeries" />
@@ -357,9 +350,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TransferObjectID" Type="Int16" Nullable="false" />
     <Property Name="TransferlTimeInMinute" Type="Byte" Nullable="false" />
-    <Property Name="TransferTypeID" Type="Byte" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="TransferObject" Relationship="Self.FK_TransferHistory_TransferObject" FromRole="TransferHistory" ToRole="TransferObject" />
     <NavigationProperty Name="TransferType" Relationship="Self.FK_TransferHistory_TransferType" FromRole="TransferHistory" ToRole="TransferType" />
@@ -369,12 +360,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Station_1" Type="Int16" Nullable="false" />
-    <Property Name="Station_2" Type="Int16" Nullable="false" />
-    <Property Name="StateID" Type="Byte" />
     <NavigationProperty Name="State" Relationship="Self.FK_TransferObject_State" FromRole="TransferObject" ToRole="State" />
-    <NavigationProperty Name="StationObject" Relationship="Self.FK_TransferObject_StationObject" FromRole="TransferObject" ToRole="StationObject" />
-    <NavigationProperty Name="StationObject1" Relationship="Self.FK_TransferObject_StationObject1" FromRole="TransferObject" ToRole="StationObject" />
+    <NavigationProperty Name="StationObject" Relationship="Self.FK_TransferObject_StationObject1" FromRole="TransferObject" ToRole="StationObject" />
+    <NavigationProperty Name="StationObject1" Relationship="Self.FK_TransferObject_StationObject2" FromRole="TransferObject" ToRole="StationObject" />
     <NavigationProperty Name="TransferHistory" Relationship="Self.FK_TransferHistory_TransferObject" FromRole="TransferObject" ToRole="TransferHistory" />
   </EntityType>
   <EntityType Name="TransferType">
@@ -382,392 +370,163 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TransferHistory" Relationship="Self.FK_TransferHistory_TransferType" FromRole="TransferType" ToRole="TransferHistory" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
   </EntityType>
   <Association Name="FK_Area_District">
     <End Role="District" Type="Self.District" Multiplicity="1" />
     <End Role="Area" Type="Self.Area" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="District">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Area">
-        <PropertyRef Name="DistrictID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_City_Map">
     <End Role="Map" Type="Self.Map" Multiplicity="1" />
     <End Role="City" Type="Self.City" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Map">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="City">
-        <PropertyRef Name="MapID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_District_City">
     <End Role="City" Type="Self.City" Multiplicity="1" />
     <End Role="District" Type="Self.District" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="District">
-        <PropertyRef Name="CityID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StructuralComplex_Construction">
     <End Role="Construction" Type="Self.Construction" Multiplicity="1" />
     <End Role="StructuralComplex" Type="Self.StructuralComplex" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Construction">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StructuralComplex">
-        <PropertyRef Name="ConstructionID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_LineHistory_Decade">
     <End Role="Decade" Type="Self.Decade" Multiplicity="0..1" />
     <End Role="LineHistory" Type="Self.LineHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Decade">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="LineHistory">
-        <PropertyRef Name="DecadeID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationHistory_Decade">
     <End Role="Decade" Type="Self.Decade" Multiplicity="0..1" />
     <End Role="StationHistory" Type="Self.StationHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Decade">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationHistory">
-        <PropertyRef Name="DecadeID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_DepotLine_Depot">
     <End Role="Depot" Type="Self.Depot" Multiplicity="1" />
     <End Role="DepotLine" Type="Self.DepotLine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Depot">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="DepotLine">
-        <PropertyRef Name="DepotID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_DepotLine_LineObject">
     <End Role="LineObject" Type="Self.LineObject" Multiplicity="1" />
     <End Role="DepotLine" Type="Self.DepotLine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LineObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="DepotLine">
-        <PropertyRef Name="LineObjectID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationObject_DepthType">
     <End Role="DepthType" Type="Self.DepthType" Multiplicity="0..1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DepthType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="DepthTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StructuralComplex_Floor">
     <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
     <End Role="StructuralComplex" Type="Self.StructuralComplex" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Floor">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StructuralComplex">
-        <PropertyRef Name="FloorID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationPhoto_PhotoComment">
     <End Role="HallPhoto" Type="Self.HallPhoto" Multiplicity="0..1" />
     <End Role="StationPhoto" Type="Self.StationPhoto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HallPhoto">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationPhoto">
-        <PropertyRef Name="HallPhotoID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationObject_HousingCost">
     <End Role="HousingCost" Type="Self.HousingCost" Multiplicity="1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HousingCost">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="HousingCostID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_LineHistory_LineObject">
     <End Role="LineObject" Type="Self.LineObject" Multiplicity="1" />
     <End Role="LineHistory" Type="Self.LineHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LineObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="LineHistory">
-        <PropertyRef Name="LineObjectID" />
-      </Dependent>
-    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineHistory_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="LineHistory" Type="Self.LineHistory" Multiplicity="*" />
   </Association>
   <Association Name="FK_LineObject_Map">
     <End Role="Map" Type="Self.Map" Multiplicity="1" />
     <End Role="LineObject" Type="Self.LineObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Map">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="LineObject">
-        <PropertyRef Name="MapID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationHistory_LineObject">
     <End Role="LineObject" Type="Self.LineObject" Multiplicity="1" />
     <End Role="StationHistory" Type="Self.StationHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LineObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationHistory">
-        <PropertyRef Name="LineObjectID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StructuralComplex_Location">
     <End Role="Location" Type="Self.Location" Multiplicity="1" />
     <End Role="StructuralComplex" Type="Self.StructuralComplex" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Location">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StructuralComplex">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationPhoto_PhotoAngle">
     <End Role="PhotoAngle" Type="Self.PhotoAngle" Multiplicity="0..1" />
     <End Role="StationPhoto" Type="Self.StationPhoto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhotoAngle">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationPhoto">
-        <PropertyRef Name="PhotoAngleID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_Pillar_Span">
     <End Role="Span" Type="Self.Span" Multiplicity="1" />
     <End Role="Pillar" Type="Self.Pillar" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Span">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Pillar">
-        <PropertyRef Name="SpanID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StructuralComplex_Pillar">
     <End Role="Pillar" Type="Self.Pillar" Multiplicity="1" />
     <End Role="StructuralComplex" Type="Self.StructuralComplex" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Pillar">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StructuralComplex">
-        <PropertyRef Name="PillarID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationObject_Platform">
     <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Platform">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="PlatformID" />
-      </Dependent>
-    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
   </Association>
   <Association Name="FK_StationObject_State">
     <End Role="State" Type="Self.State" Multiplicity="1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="State">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="StateID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransferObject_State">
     <End Role="State" Type="Self.State" Multiplicity="0..1" />
     <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="State">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TransferObject">
-        <PropertyRef Name="StateID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationHistory_StationObject">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="StationHistory" Type="Self.StationHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StationObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationHistory">
-        <PropertyRef Name="StationObjectID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationHistory_Status">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="StationHistory" Type="Self.StationHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationHistory">
-        <PropertyRef Name="StatusID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationObject_StructuralComplex">
     <End Role="StructuralComplex" Type="Self.StructuralComplex" Multiplicity="0..1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StructuralComplex">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="StructuralComplexID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_StationObject_TrafficType">
     <End Role="TrafficType" Type="Self.TrafficType" Multiplicity="0..1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrafficType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationObject">
-        <PropertyRef Name="TrafficTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StationPhoto_StationObject1">
+  <Association Name="FK_StationPhoto_StationObject">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="StationPhoto" Type="Self.StationPhoto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StationObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="StationPhoto">
-        <PropertyRef Name="StationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransferObject_StationObject">
-    <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
-    <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StationObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TransferObject">
-        <PropertyRef Name="Station_1" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransferObject_StationObject1">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StationObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TransferObject">
-        <PropertyRef Name="Station_2" />
-      </Dependent>
-    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferObject_StationObject2">
+    <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
+    <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_TrafficType_TrafficDescription">
+    <End Role="TrafficDescription" Type="Self.TrafficDescription" Multiplicity="1" />
+    <End Role="TrafficType" Type="Self.TrafficType" Multiplicity="*" />
   </Association>
   <Association Name="FK_Train_Series">
     <End Role="TrainSeries" Type="Self.TrainSeries" Multiplicity="1" />
     <End Role="Train" Type="Self.Train" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrainSeries">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Train">
-        <PropertyRef Name="TrainSeriesID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransferHistory_TransferObject">
     <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="1" />
     <End Role="TransferHistory" Type="Self.TransferHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TransferObject">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TransferHistory">
-        <PropertyRef Name="TransferObjectID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransferHistory_TransferType">
     <End Role="TransferType" Type="Self.TransferType" Multiplicity="1" />
     <End Role="TransferHistory" Type="Self.TransferHistory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TransferType">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TransferHistory">
-        <PropertyRef Name="TransferTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="PeculiarityStation">
     <End Role="Peculiarity" Type="Self.Peculiarity" Multiplicity="*" />
@@ -781,7 +540,7 @@
     <End Role="LineObject" Type="Self.LineObject" Multiplicity="*" />
     <End Role="Train" Type="Self.Train" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="MetroDB_VKR_Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MetroDB_VKR_Entities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Area" EntityType="Self.Area" />
     <EntitySet Name="City" EntityType="Self.City" />
     <EntitySet Name="Construction" EntityType="Self.Construction" />
@@ -801,6 +560,7 @@
     <EntitySet Name="PhotoAngle" EntityType="Self.PhotoAngle" />
     <EntitySet Name="Pillar" EntityType="Self.Pillar" />
     <EntitySet Name="Platform" EntityType="Self.Platform" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="Span" EntityType="Self.Span" />
     <EntitySet Name="State" EntityType="Self.State" />
     <EntitySet Name="StationHistory" EntityType="Self.StationHistory" />
@@ -816,6 +576,7 @@
     <EntitySet Name="TransferHistory" EntityType="Self.TransferHistory" />
     <EntitySet Name="TransferObject" EntityType="Self.TransferObject" />
     <EntitySet Name="TransferType" EntityType="Self.TransferType" />
+    <EntitySet Name="User" EntityType="Self.User" />
     <AssociationSet Name="FK_Area_District" Association="Self.FK_Area_District">
       <End Role="District" EntitySet="District" />
       <End Role="Area" EntitySet="Area" />
@@ -868,6 +629,10 @@
       <End Role="LineObject" EntitySet="LineObject" />
       <End Role="LineHistory" EntitySet="LineHistory" />
     </AssociationSet>
+    <AssociationSet Name="FK_LineHistory_Status" Association="Self.FK_LineHistory_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="LineHistory" EntitySet="LineHistory" />
+    </AssociationSet>
     <AssociationSet Name="FK_LineObject_Map" Association="Self.FK_LineObject_Map">
       <End Role="Map" EntitySet="Map" />
       <End Role="LineObject" EntitySet="LineObject" />
@@ -896,6 +661,10 @@
       <End Role="Platform" EntitySet="Platform" />
       <End Role="StationObject" EntitySet="StationObject" />
     </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
     <AssociationSet Name="FK_StationObject_State" Association="Self.FK_StationObject_State">
       <End Role="State" EntitySet="State" />
       <End Role="StationObject" EntitySet="StationObject" />
@@ -920,17 +689,21 @@
       <End Role="TrafficType" EntitySet="TrafficType" />
       <End Role="StationObject" EntitySet="StationObject" />
     </AssociationSet>
-    <AssociationSet Name="FK_StationPhoto_StationObject1" Association="Self.FK_StationPhoto_StationObject1">
+    <AssociationSet Name="FK_StationPhoto_StationObject" Association="Self.FK_StationPhoto_StationObject">
       <End Role="StationObject" EntitySet="StationObject" />
       <End Role="StationPhoto" EntitySet="StationPhoto" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransferObject_StationObject" Association="Self.FK_TransferObject_StationObject">
-      <End Role="StationObject" EntitySet="StationObject" />
-      <End Role="TransferObject" EntitySet="TransferObject" />
     </AssociationSet>
     <AssociationSet Name="FK_TransferObject_StationObject1" Association="Self.FK_TransferObject_StationObject1">
       <End Role="StationObject" EntitySet="StationObject" />
       <End Role="TransferObject" EntitySet="TransferObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferObject_StationObject2" Association="Self.FK_TransferObject_StationObject2">
+      <End Role="StationObject" EntitySet="StationObject" />
+      <End Role="TransferObject" EntitySet="TransferObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrafficType_TrafficDescription" Association="Self.FK_TrafficType_TrafficDescription">
+      <End Role="TrafficDescription" EntitySet="TrafficDescription" />
+      <End Role="TrafficType" EntitySet="TrafficType" />
     </AssociationSet>
     <AssociationSet Name="FK_Train_Series" Association="Self.FK_Train_Series">
       <End Role="TrainSeries" EntitySet="TrainSeries" />
@@ -956,21 +729,8 @@
       <End Role="LineObject" EntitySet="LineObject" />
       <End Role="Train" EntitySet="Train" />
     </AssociationSet>
-    <AssociationSet Name="FK_TrafficType_TrafficDescription" Association="MetroDB_VKR_Model.FK_TrafficType_TrafficDescription">
-      <End Role="TrafficDescription" EntitySet="TrafficDescription" />
-      <End Role="TrafficType" EntitySet="TrafficType" />
-    </AssociationSet>
+    <FunctionImport Name="FUNC_LineHistory" IsComposable="true" ReturnType="Collection(MetroDB_VKRModel.FUNC_LineHistory_Result)">
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
-  <Association Name="FK_TrafficType_TrafficDescription">
-    <End Type="MetroDB_VKR_Model.TrafficDescription" Role="TrafficDescription" Multiplicity="1" />
-    <End Type="MetroDB_VKR_Model.TrafficType" Role="TrafficType" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TrafficDescription">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TrafficType">
-        <PropertyRef Name="TrafficDescriptionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

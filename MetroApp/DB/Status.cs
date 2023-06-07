@@ -17,6 +17,7 @@ namespace MetroApp.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Status()
         {
+            this.LineHistory = new HashSet<LineHistory>();
             this.StationHistory = new HashSet<StationHistory>();
         }
     
@@ -24,6 +25,8 @@ namespace MetroApp.DB
         public string Title { get; set; }
         public string Color { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LineHistory> LineHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StationHistory> StationHistory { get; set; }
     }

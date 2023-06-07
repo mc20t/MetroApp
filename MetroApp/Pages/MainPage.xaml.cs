@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MetroApp.ClassHelper;
+using MetroApp.DB;
 
 namespace MetroApp.Pages
 {
@@ -20,12 +22,6 @@ namespace MetroApp.Pages
         public MainPage()
         {
             InitializeComponent();
-            //SSS();
         }
-
-        //public void SSS()
-        //{
-        //    MetroApp.MainWindow.ActivityTitle.Text = 'Меню';
-        //}
     }
 }

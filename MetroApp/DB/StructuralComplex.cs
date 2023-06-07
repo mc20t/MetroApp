@@ -21,10 +21,6 @@ namespace MetroApp.DB
         }
     
         public byte ID { get; set; }
-        public byte LocationID { get; set; }
-        public byte ConstructionID { get; set; }
-        public byte FloorID { get; set; }
-        public byte PillarID { get; set; }
     
         public virtual Construction Construction { get; set; }
         public virtual Floor Floor { get; set; }

@@ -31,13 +31,7 @@ namespace MetroApp.DB
         public Nullable<short> PlatformLenght { get; set; }
         public Nullable<byte> HallHeight { get; set; }
         public Nullable<decimal> Depth { get; set; }
-        public Nullable<byte> DepthTypeID { get; set; }
-        public Nullable<byte> StructuralComplexID { get; set; }
-        public Nullable<byte> PlatformID { get; set; }
-        public byte HousingCostID { get; set; }
-        public byte StateID { get; set; }
         public Nullable<byte> Traffic { get; set; }
-        public Nullable<byte> TrafficTypeID { get; set; }
     
         public virtual DepthType DepthType { get; set; }
         public virtual HousingCost HousingCost { get; set; }

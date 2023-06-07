@@ -25,12 +25,12 @@ namespace MetroApp.Pages
 
         private void MapBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new IdTitlePage("Карты"));
+            NavigationService.Navigate(new EditorListPage("Карты"));
         }
 
         private void CityBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void DistrictBtn_Click(object sender, RoutedEventArgs e)
@@ -55,17 +55,17 @@ namespace MetroApp.Pages
 
         private void PhotoAngleBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Ракурсы"));
         }
 
         private void HallPhotoBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Помещения"));
         }
 
         private void TrainSeriesBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Серии поездов"));
         }
 
         private void TrainBtn_Click(object sender, RoutedEventArgs e)
@@ -85,7 +85,7 @@ namespace MetroApp.Pages
 
         private void DepotBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Депо"));
         }
 
         private void LineObjectBtn_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace MetroApp.Pages
 
         private void TransferTypeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Типы пересадкок"));
         }
 
         private void LocationBtn_Click(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace MetroApp.Pages
 
         private void ConstructionBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Конструкции"));
         }
 
         private void PillarBtn_Click(object sender, RoutedEventArgs e)
@@ -140,12 +140,12 @@ namespace MetroApp.Pages
 
         private void SpanBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Пролёты"));
         }
 
         private void FloorBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Перекрытия"));
         }
 
         private void StructComplexBtn_Click(object sender, RoutedEventArgs e)
@@ -165,7 +165,7 @@ namespace MetroApp.Pages
 
         private void PeculiarityBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Особенности"));
         }
 
         private void PeculiarityStationBtn_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,7 @@ namespace MetroApp.Pages
 
         private void PlatformBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Платформы"));
         }
 
         private void TrafficTypeBtn_Click(object sender, RoutedEventArgs e)
@@ -185,7 +185,7 @@ namespace MetroApp.Pages
 
         private void TrafficDescrBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditorListPage("Пассажирпоток (описание)"));
         }
 
         private void HousingCostBtn_Click(object sender, RoutedEventArgs e)

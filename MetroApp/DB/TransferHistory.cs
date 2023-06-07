@@ -15,9 +15,7 @@ namespace MetroApp.DB
     public partial class TransferHistory
     {
         public int ID { get; set; }
-        public short TransferObjectID { get; set; }
         public byte TransferlTimeInMinute { get; set; }
-        public byte TransferTypeID { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual TransferObject TransferObject { get; set; }

@@ -16,13 +16,9 @@ namespace MetroApp.DB
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public short StationObjectID { get; set; }
-        public short LineObjectID { get; set; }
-        public string Description { get; set; }
-        public Nullable<byte> DecadeID { get; set; }
         public System.DateTime Date { get; set; }
-        public byte StatusID { get; set; }
-        public Nullable<byte> PossessionID { get; set; }
+        public byte Sequencing { get; set; }
+        public string Description { get; set; }
     
         public virtual Decade Decade { get; set; }
         public virtual LineObject LineObject { get; set; }

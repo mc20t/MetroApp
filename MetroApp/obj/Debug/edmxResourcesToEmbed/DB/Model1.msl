@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MetroDB_VKRModelContainer" CdmEntityContainer="MetroDB_VKREntities1">
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Construction">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Construction">
+        <MappingFragment StoreEntitySet="Construction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Decade">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Decade">
+        <MappingFragment StoreEntitySet="Decade">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Depot">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Depot">
+        <MappingFragment StoreEntitySet="Depot">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepotLine">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.DepotLine">
+        <MappingFragment StoreEntitySet="DepotLine">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepthType">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.DepthType">
+        <MappingFragment StoreEntitySet="DepthType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="District">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Floor">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Floor">
+        <MappingFragment StoreEntitySet="Floor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HallPhoto">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.HallPhoto">
+        <MappingFragment StoreEntitySet="HallPhoto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HousingCost">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.HousingCost">
+        <MappingFragment StoreEntitySet="HousingCost">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineHistory">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.LineHistory">
+        <MappingFragment StoreEntitySet="LineHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+          <ScalarProperty Name="TravelTimeInMinute" ColumnName="TravelTimeInMinute" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineObject">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.LineObject">
+        <MappingFragment StoreEntitySet="LineObject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Location">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Map">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Map">
+        <MappingFragment StoreEntitySet="Map">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Peculiarity">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Peculiarity">
+        <MappingFragment StoreEntitySet="Peculiarity">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhotoAngle">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.PhotoAngle">
+        <MappingFragment StoreEntitySet="PhotoAngle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pillar">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Pillar">
+        <MappingFragment StoreEntitySet="Pillar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Platform">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Platform">
+        <MappingFragment StoreEntitySet="Platform">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Unilateral" ColumnName="Unilateral" />
+          <ScalarProperty Name="Bilateral" ColumnName="Bilateral" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Span">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Span">
+        <MappingFragment StoreEntitySet="Span">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StationHistory">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.StationHistory">
+        <MappingFragment StoreEntitySet="StationHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Sequencing" ColumnName="Sequencing" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StationObject">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.StationObject">
+        <MappingFragment StoreEntitySet="StationObject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PlatformWidth" ColumnName="PlatformWidth" />
+          <ScalarProperty Name="PlatformLenght" ColumnName="PlatformLenght" />
+          <ScalarProperty Name="HallHeight" ColumnName="HallHeight" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="Traffic" ColumnName="Traffic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StationPhoto">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.StationPhoto">
+        <MappingFragment StoreEntitySet="StationPhoto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StructuralComplex">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.StructuralComplex">
+        <MappingFragment StoreEntitySet="StructuralComplex">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrafficDescription">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TrafficDescription">
+        <MappingFragment StoreEntitySet="TrafficDescription">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrafficType">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TrafficType">
+        <MappingFragment StoreEntitySet="TrafficType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Minimum" ColumnName="Minimum" />
+          <ScalarProperty Name="Maximum" ColumnName="Maximum" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Train">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.Train">
+        <MappingFragment StoreEntitySet="Train">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainSeries">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TrainSeries">
+        <MappingFragment StoreEntitySet="TrainSeries">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferHistory">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TransferHistory">
+        <MappingFragment StoreEntitySet="TransferHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransferlTimeInMinute" ColumnName="TransferlTimeInMinute" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferObject">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TransferObject">
+        <MappingFragment StoreEntitySet="TransferObject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferType">
+      <EntityTypeMapping TypeName="MetroDB_VKRModel.TransferType">
+        <MappingFragment StoreEntitySet="TransferType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Area_District" TypeName="MetroDB_VKRModel.FK_Area_District" StoreEntitySet="Area">
+      <EndProperty Name="District">
+        <ScalarProperty Name="ID" ColumnName="DistrictID" />
+      </EndProperty>
+      <EndProperty Name="Area">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_City_Map" TypeName="MetroDB_VKRModel.FK_City_Map" StoreEntitySet="City">
+      <EndProperty Name="Map">
+        <ScalarProperty Name="ID" ColumnName="MapID" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_District_City" TypeName="MetroDB_VKRModel.FK_District_City" StoreEntitySet="District">
+      <EndProperty Name="City">
+        <ScalarProperty Name="ID" ColumnName="CityID" />
+      </EndProperty>
+      <EndProperty Name="District">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StructuralComplex_Construction" TypeName="MetroDB_VKRModel.FK_StructuralComplex_Construction" StoreEntitySet="StructuralComplex">
+      <EndProperty Name="Construction">
+        <ScalarProperty Name="ID" ColumnName="ConstructionID" />
+      </EndProperty>
+      <EndProperty Name="StructuralComplex">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LineHistory_Decade" TypeName="MetroDB_VKRModel.FK_LineHistory_Decade" StoreEntitySet="LineHistory">
+      <EndProperty Name="Decade">
+        <ScalarProperty Name="ID" ColumnName="DecadeID" />
+      </EndProperty>
+      <EndProperty Name="LineHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="DecadeID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationHistory_Decade" TypeName="MetroDB_VKRModel.FK_StationHistory_Decade" StoreEntitySet="StationHistory">
+      <EndProperty Name="Decade">
+        <ScalarProperty Name="ID" ColumnName="DecadeID" />
+      </EndProperty>
+      <EndProperty Name="StationHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="DecadeID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_DepotLine_Depot" TypeName="MetroDB_VKRModel.FK_DepotLine_Depot" StoreEntitySet="DepotLine">
+      <EndProperty Name="Depot">
+        <ScalarProperty Name="ID" ColumnName="DepotID" />
+      </EndProperty>
+      <EndProperty Name="DepotLine">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_DepotLine_LineObject" TypeName="MetroDB_VKRModel.FK_DepotLine_LineObject" StoreEntitySet="DepotLine">
+      <EndProperty Name="LineObject">
+        <ScalarProperty Name="ID" ColumnName="LineObjectID" />
+      </EndProperty>
+      <EndProperty Name="DepotLine">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_DepthType" TypeName="MetroDB_VKRModel.FK_StationObject_DepthType" StoreEntitySet="StationObject">
+      <EndProperty Name="DepthType">
+        <ScalarProperty Name="ID" ColumnName="DepthTypeID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="DepthTypeID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StructuralComplex_Floor" TypeName="MetroDB_VKRModel.FK_StructuralComplex_Floor" StoreEntitySet="StructuralComplex">
+      <EndProperty Name="Floor">
+        <ScalarProperty Name="ID" ColumnName="FloorID" />
+      </EndProperty>
+      <EndProperty Name="StructuralComplex">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationPhoto_PhotoComment" TypeName="MetroDB_VKRModel.FK_StationPhoto_PhotoComment" StoreEntitySet="StationPhoto">
+      <EndProperty Name="HallPhoto">
+        <ScalarProperty Name="ID" ColumnName="HallPhotoID" />
+      </EndProperty>
+      <EndProperty Name="StationPhoto">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="HallPhotoID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_HousingCost" TypeName="MetroDB_VKRModel.FK_StationObject_HousingCost" StoreEntitySet="StationObject">
+      <EndProperty Name="HousingCost">
+        <ScalarProperty Name="ID" ColumnName="HousingCostID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LineHistory_LineObject" TypeName="MetroDB_VKRModel.FK_LineHistory_LineObject" StoreEntitySet="LineHistory">
+      <EndProperty Name="LineObject">
+        <ScalarProperty Name="ID" ColumnName="LineObjectID" />
+      </EndProperty>
+      <EndProperty Name="LineHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LineHistory_Status" TypeName="MetroDB_VKRModel.FK_LineHistory_Status" StoreEntitySet="LineHistory">
+      <EndProperty Name="Status">
+        <ScalarProperty Name="ID" ColumnName="StatusID" />
+      </EndProperty>
+      <EndProperty Name="LineHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LineObject_Map" TypeName="MetroDB_VKRModel.FK_LineObject_Map" StoreEntitySet="LineObject">
+      <EndProperty Name="Map">
+        <ScalarProperty Name="ID" ColumnName="MapID" />
+      </EndProperty>
+      <EndProperty Name="LineObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationHistory_LineObject" TypeName="MetroDB_VKRModel.FK_StationHistory_LineObject" StoreEntitySet="StationHistory">
+      <EndProperty Name="LineObject">
+        <ScalarProperty Name="ID" ColumnName="LineObjectID" />
+      </EndProperty>
+      <EndProperty Name="StationHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StructuralComplex_Location" TypeName="MetroDB_VKRModel.FK_StructuralComplex_Location" StoreEntitySet="StructuralComplex">
+      <EndProperty Name="Location">
+        <ScalarProperty Name="ID" ColumnName="LocationID" />
+      </EndProperty>
+      <EndProperty Name="StructuralComplex">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationPhoto_PhotoAngle" TypeName="MetroDB_VKRModel.FK_StationPhoto_PhotoAngle" StoreEntitySet="StationPhoto">
+      <EndProperty Name="PhotoAngle">
+        <ScalarProperty Name="ID" ColumnName="PhotoAngleID" />
+      </EndProperty>
+      <EndProperty Name="StationPhoto">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="PhotoAngleID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Pillar_Span" TypeName="MetroDB_VKRModel.FK_Pillar_Span" StoreEntitySet="Pillar">
+      <EndProperty Name="Span">
+        <ScalarProperty Name="ID" ColumnName="SpanID" />
+      </EndProperty>
+      <EndProperty Name="Pillar">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StructuralComplex_Pillar" TypeName="MetroDB_VKRModel.FK_StructuralComplex_Pillar" StoreEntitySet="StructuralComplex">
+      <EndProperty Name="Pillar">
+        <ScalarProperty Name="ID" ColumnName="PillarID" />
+      </EndProperty>
+      <EndProperty Name="StructuralComplex">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_Platform" TypeName="MetroDB_VKRModel.FK_StationObject_Platform" StoreEntitySet="StationObject">
+      <EndProperty Name="Platform">
+        <ScalarProperty Name="ID" ColumnName="PlatformID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="PlatformID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_State" TypeName="MetroDB_VKRModel.FK_StationObject_State" StoreEntitySet="StationObject">
+      <EndProperty Name="State">
+        <ScalarProperty Name="ID" ColumnName="StateID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TransferObject_State" TypeName="MetroDB_VKRModel.FK_TransferObject_State" StoreEntitySet="TransferObject">
+      <EndProperty Name="State">
+        <ScalarProperty Name="ID" ColumnName="StateID" />
+      </EndProperty>
+      <EndProperty Name="TransferObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="StateID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationHistory_StationObject" TypeName="MetroDB_VKRModel.FK_StationHistory_StationObject" StoreEntitySet="StationHistory">
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="StationObjectID" />
+      </EndProperty>
+      <EndProperty Name="StationHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationHistory_Status" TypeName="MetroDB_VKRModel.FK_StationHistory_Status" StoreEntitySet="StationHistory">
+      <EndProperty Name="Status">
+        <ScalarProperty Name="ID" ColumnName="StatusID" />
+      </EndProperty>
+      <EndProperty Name="StationHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_StructuralComplex" TypeName="MetroDB_VKRModel.FK_StationObject_StructuralComplex" StoreEntitySet="StationObject">
+      <EndProperty Name="StructuralComplex">
+        <ScalarProperty Name="ID" ColumnName="StructuralComplexID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="StructuralComplexID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationObject_TrafficType" TypeName="MetroDB_VKRModel.FK_StationObject_TrafficType" StoreEntitySet="StationObject">
+      <EndProperty Name="TrafficType">
+        <ScalarProperty Name="ID" ColumnName="TrafficTypeID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="TrafficTypeID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StationPhoto_StationObject" TypeName="MetroDB_VKRModel.FK_StationPhoto_StationObject" StoreEntitySet="StationPhoto">
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="StationID" />
+      </EndProperty>
+      <EndProperty Name="StationPhoto">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TransferObject_StationObject1" TypeName="MetroDB_VKRModel.FK_TransferObject_StationObject1" StoreEntitySet="TransferObject">
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="Station_1" />
+      </EndProperty>
+      <EndProperty Name="TransferObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TransferObject_StationObject2" TypeName="MetroDB_VKRModel.FK_TransferObject_StationObject2" StoreEntitySet="TransferObject">
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="Station_2" />
+      </EndProperty>
+      <EndProperty Name="TransferObject">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TrafficType_TrafficDescription" TypeName="MetroDB_VKRModel.FK_TrafficType_TrafficDescription" StoreEntitySet="TrafficType">
+      <EndProperty Name="TrafficDescription">
+        <ScalarProperty Name="ID" ColumnName="TrafficDescriptionID" />
+      </EndProperty>
+      <EndProperty Name="TrafficType">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Train_Series" TypeName="MetroDB_VKRModel.FK_Train_Series" StoreEntitySet="Train">
+      <EndProperty Name="TrainSeries">
+        <ScalarProperty Name="ID" ColumnName="TrainSeriesID" />
+      </EndProperty>
+      <EndProperty Name="Train">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TransferHistory_TransferObject" TypeName="MetroDB_VKRModel.FK_TransferHistory_TransferObject" StoreEntitySet="TransferHistory">
+      <EndProperty Name="TransferObject">
+        <ScalarProperty Name="ID" ColumnName="TransferObjectID" />
+      </EndProperty>
+      <EndProperty Name="TransferHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TransferHistory_TransferType" TypeName="MetroDB_VKRModel.FK_TransferHistory_TransferType" StoreEntitySet="TransferHistory">
+      <EndProperty Name="TransferType">
+        <ScalarProperty Name="ID" ColumnName="TransferTypeID" />
+      </EndProperty>
+      <EndProperty Name="TransferHistory">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PeculiarityStation" TypeName="MetroDB_VKRModel.PeculiarityStation" StoreEntitySet="PeculiarityStation">
+      <EndProperty Name="Peculiarity">
+        <ScalarProperty Name="ID" ColumnName="PeculiarityID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="StationObjectID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StationArea" TypeName="MetroDB_VKRModel.StationArea" StoreEntitySet="StationArea">
+      <EndProperty Name="Area">
+        <ScalarProperty Name="ID" ColumnName="AreaID" />
+      </EndProperty>
+      <EndProperty Name="StationObject">
+        <ScalarProperty Name="ID" ColumnName="StationID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TrainLine" TypeName="MetroDB_VKRModel.TrainLine" StoreEntitySet="TrainLine">
+      <EndProperty Name="LineObject">
+        <ScalarProperty Name="ID" ColumnName="LineObjectID" />
+      </EndProperty>
+      <EndProperty Name="Train">
+        <ScalarProperty Name="ID" ColumnName="TrainID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionName="Хранилище MetroDB_VKRModel.FUNC_LineHistory" FunctionImportName="FUNC_LineHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MetroDB_VKRModel.FUNC_LineHistory_Result">
+          <ScalarProperty Name="LINE" ColumnName="ЛИНИЯ" />
+          <ScalarProperty Name="LAST_MOD_DATE" ColumnName="ДАТА ПОСЛЕДНИХ ИЗМЕНЕНИЙ" />
+          <ScalarProperty Name="LINE_LENGTH" ColumnName="ДЛИНА" />
+          <ScalarProperty Name="TRAVEL_TIME" ColumnName="ВРЕМЯ В ПУТИ" />
+          <ScalarProperty Name="LINE_STATUS" ColumnName="СОСТОЯНИЕ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

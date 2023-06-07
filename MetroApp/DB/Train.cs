@@ -22,7 +22,6 @@ namespace MetroApp.DB
     
         public byte ID { get; set; }
         public string Name { get; set; }
-        public byte TrainSeriesID { get; set; }
         public short Year { get; set; }
         public string Photo { get; set; }
     

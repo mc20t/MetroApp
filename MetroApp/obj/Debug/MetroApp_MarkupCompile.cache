@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\alexe\Documents\GitHub\Metro\MetroApp\obj\Debug\
+C:\Users\alexe\Documents\GitHub\MetroApp\MetroApp\obj\Debug\
 MetroApp
 none
 false
 DEBUG;TRACE
-C:\Users\alexe\Documents\GitHub\Metro\MetroApp\App.xaml
-10349359886
+C:\Users\alexe\Documents\GitHub\MetroApp\MetroApp\App.xaml
+16-1271025657
 2-1714945715
-521675334485
-18141044659
-MainWindow.xaml;Pages\EditorPage.xaml;Pages\EditPages\IDIDPage.xaml;Pages\EditPages\IdMinMaxColorPage.xaml;Pages\EditPages\IdTitleAbrIdPage.xaml;Pages\EditPages\IdTitleAddrPage.xaml;Pages\EditPages\IdTitleColorPage.xaml;Pages\EditPages\IdTitleIdPage.xaml;Pages\EditPages\IdTitlePage.xaml;Pages\MainPage.xaml;
+641894194394
+20577213431
+Pages\AboutUsPage.xaml;Pages\LineListPage.xaml;Pages\StationInfoList.xaml;Pages\StationListPage.xaml;Windows\AddUpdateWindow.xaml;MainWindow.xaml;Pages\EditorListPage.xaml;Pages\EditorPage.xaml;Pages\EditPages\IDIDPage.xaml;Pages\EditPages\IdMinMaxColorPage.xaml;Pages\EditPages\IdTitleColorIdPage.xaml;Pages\EditPages\IdTitleAbbrPage.xaml;Pages\EditPages\IdTitleIdPage.xaml;Pages\EditPages\IdTitlePage.xaml;Pages\MainPage.xaml;Windows\SignInWindow.xaml;
 
 False
 

@@ -16,9 +16,6 @@ namespace MetroApp.DB
     {
         public short ID { get; set; }
         public string Photo { get; set; }
-        public short StationID { get; set; }
-        public Nullable<byte> PhotoAngleID { get; set; }
-        public Nullable<byte> HallPhotoID { get; set; }
     
         public virtual HallPhoto HallPhoto { get; set; }
         public virtual PhotoAngle PhotoAngle { get; set; }

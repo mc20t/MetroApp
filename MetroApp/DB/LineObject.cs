@@ -25,8 +25,6 @@ namespace MetroApp.DB
     
         public short ID { get; set; }
         public string Description { get; set; }
-        public Nullable<System.DateTime> ClosingDate { get; set; }
-        public byte MapID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DepotLine> DepotLine { get; set; }

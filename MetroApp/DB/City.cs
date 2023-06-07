@@ -22,7 +22,6 @@ namespace MetroApp.DB
     
         public byte ID { get; set; }
         public string Name { get; set; }
-        public byte MapID { get; set; }
     
         public virtual Map Map { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

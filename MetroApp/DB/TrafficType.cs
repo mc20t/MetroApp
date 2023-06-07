@@ -24,7 +24,6 @@ namespace MetroApp.DB
         public byte Minimum { get; set; }
         public byte Maximum { get; set; }
         public string Color { get; set; }
-        public byte TrafficDescriptionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StationObject> StationObject { get; set; }

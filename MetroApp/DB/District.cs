@@ -23,7 +23,6 @@ namespace MetroApp.DB
         public short ID { get; set; }
         public string Name { get; set; }
         public string Abbreviation { get; set; }
-        public byte CityID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Area> Area { get; set; }

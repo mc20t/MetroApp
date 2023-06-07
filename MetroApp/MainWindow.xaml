@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MetroApp"
         mc:Ignorable="d"
+        Icon="/logo.png"
         WindowStartupLocation="CenterScreen"
         Height="650" Width="1000">
     <Grid Background="CornflowerBlue">
@@ -14,40 +15,33 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="113*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="400*"/>
-            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="700*"/>
             <ColumnDefinition Width="113*"/>
         </Grid.ColumnDefinitions>
 
         <Image Source="/Images/logo.png"
                Margin="0 0 0 10"/>
-        <TextBlock Name="q"
+        <TextBlock x:Name="ActivityTitle"
                    FontSize="25"
-                   Text="something"
+                   Text="Меню"
                    Grid.Column="1"
                    Foreground="White"
                    TextAlignment="Center"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
-        <TextBlock x:Name="ActivityTitle"
-                   FontSize="25"
-                   Text="Меню"
-                   Grid.Column="2"
-                   Foreground="White"
-                   TextAlignment="Center"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <ComboBox x:Name="cmbMap"
+        <TextBox  x:Name="txtSearch"
                   Height="25"
                   Width="150"
-                  Grid.Column="3"
-                  HorizontalAlignment="Center"
-                  SelectionChanged="cmbMap_SelectionChanged"/>
-        <DatePicker Name="dpDate"
-                    Grid.Column="4"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
+                  Grid.Column="1"
+                  FontSize="17"
+                  HorizontalAlignment="Right"/>
+        <Button x:Name="btnSearch"
+                Content="Найти"
+                Height="25"
+                Width="50"
+                Margin="5"
+                HorizontalAlignment="Left"
+                Grid.Column="2"/>
 
         <StackPanel Background="#FF404040"
                     Grid.Row="1">
@@ -58,11 +52,25 @@
                     FontSize="20"
                     Background="#FF404040"
                     Click="Menu_Click"/>
-        </StackPanel>
-
-        <StackPanel Grid.Column="4"
+            <Button Name="btnLineList"
+                    Height="50"
+                    Content="Линии"
+                    Foreground="White"
+                    FontSize="20"
                     Background="#FF404040"
-                    Grid.Row="1">
+                    Click="btnLineList_Click"/>
+            <Button Name="f"
+                    Height="50"
+                    Content=""
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"/>
+            <Button Name="h"
+                    Height="50"
+                    Content=""
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"/>
             <Button Name="Editor"
                     Height="50"
                     Content="Редакор"
@@ -70,12 +78,44 @@
                     FontSize="20"
                     Background="#FF404040"
                     Click="Editor_Click"/>
+            <Button Name="fj"
+                    Height="50"
+                    Content=""
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"/>
+            <Button Name="z"
+                    Height="50"
+                    Content=""
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"/>
+            <Button Name="v"
+                    Height="50"
+                    Content=""
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"/>
+            <Button Name="btnSignIn"
+                    Height="50"
+                    Content="Вход"
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"
+                    Click="btnSignIn_Click"/>
+            <Button Name="btnAboutUs"
+                    Height="50"
+                    Content="О проекте"
+                    Foreground="White"
+                    FontSize="20"
+                    Background="#FF404040"
+                    Click="btnAboutUs_Click"/>
+            
         </StackPanel>
 
         <Frame Name="mainFrame"
                Grid.Column="1"
-               Grid.ColumnSpan="3"
-               Grid.Row="1"
-               Grid.RowSpan="2"/>
+               Grid.ColumnSpan="2"
+               Grid.Row="1"/>
     </Grid>
 </Window>

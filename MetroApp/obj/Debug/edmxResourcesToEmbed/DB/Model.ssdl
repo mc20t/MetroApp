@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Хранилище MetroDB_VKR_Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Хранилище MetroDB_VKRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Area">
     <Key>
       <PropertyRef Name="ID" />
@@ -39,7 +39,7 @@
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="7" Nullable="false" />
   </EntityType>
   <EntityType Name="DepotLine">
     <Key>
@@ -82,7 +82,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="HousingCost">
     <Key>
@@ -105,6 +105,7 @@
     <Property Name="Color" Type="char" MaxLength="7" Nullable="false" />
     <Property Name="DecadeID" Type="tinyint" />
     <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="StatusID" Type="tinyint" Nullable="false" />
     <Property Name="Lenght" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="TravelTimeInMinute" Type="smallint" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
@@ -114,8 +115,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ClosingDate" Type="date" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="MapID" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="Location">
@@ -154,7 +154,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Pillar">
     <Key>
@@ -172,6 +172,13 @@
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Unilateral" Type="tinyint" Nullable="false" />
     <Property Name="Bilateral" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Span">
     <Key>
@@ -207,18 +214,18 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="StationObjectID" Type="smallint" Nullable="false" />
     <Property Name="LineObjectID" Type="smallint" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
     <Property Name="DecadeID" Type="tinyint" />
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="StatusID" Type="tinyint" Nullable="false" />
-    <Property Name="PossessionID" Type="tinyint" />
+    <Property Name="Sequencing" Type="tinyint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="StationObject">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="PlatformWidth" Type="tinyint" />
     <Property Name="PlatformLenght" Type="smallint" />
     <Property Name="HallHeight" Type="tinyint" />
@@ -274,17 +281,17 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="TrafficType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Minimum" Type="tinyint" Nullable="false" />
     <Property Name="Maximum" Type="tinyint" Nullable="false" />
     <Property Name="Color" Type="nchar" MaxLength="7" Nullable="false" />
-    <Property Name="TrafficDescriptionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrafficDescriptionID" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="Train">
     <Key>
@@ -335,7 +342,22 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleID" Type="tinyint" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="500" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_Area_District">
     <End Role="District" Type="Self.District" Multiplicity="1" />
@@ -418,6 +440,18 @@
       </Principal>
       <Dependent Role="LineHistory">
         <PropertyRef Name="LineObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineHistory_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="LineHistory" Type="Self.LineHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LineHistory">
+        <PropertyRef Name="StatusID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -637,7 +671,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StationPhoto_StationObject1">
+  <Association Name="FK_StationPhoto_StationObject">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="StationPhoto" Type="Self.StationPhoto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -781,7 +815,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TransferObject_StationObject">
+  <Association Name="FK_TransferObject_StationObject1">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
     <ReferentialConstraint>
@@ -793,7 +827,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TransferObject_StationObject1">
+  <Association Name="FK_TransferObject_StationObject2">
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="1" />
     <End Role="TransferObject" Type="Self.TransferObject" Multiplicity="*" />
     <ReferentialConstraint>
@@ -805,7 +839,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Хранилище MetroDB_VKR_ModelContainer">
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="FUNC_LineHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="LINE_NUMBER" Type="nvarchar" MaxLength="5" />
+          <Property Name="LINE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="LINE_ABBR" Type="nvarchar" MaxLength="10" />
+          <Property Name="LAST_MOD_DATE" Type="date" />
+          <Property Name="LINE_COLOR" Type="char" MaxLength="7" />
+          <Property Name="LINE_LENGTH" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="TRAVEL_TIME" Type="smallint" />
+          <Property Name="LINE_STATUS" Type="nvarchar" MaxLength="30" />
+          <Property Name="STATUS_COLOR" Type="nchar" MaxLength="7" />
+          <Property Name="MAP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="Хранилище MetroDB_VKRModelContainer">
     <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Construction" EntityType="Self.Construction" Schema="dbo" store:Type="Tables" />
@@ -826,6 +891,7 @@
     <EntitySet Name="PhotoAngle" EntityType="Self.PhotoAngle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pillar" EntityType="Self.Pillar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Span" EntityType="Self.Span" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StationArea" EntityType="Self.StationArea" Schema="dbo" store:Type="Tables" />
@@ -843,6 +909,7 @@
     <EntitySet Name="TransferHistory" EntityType="Self.TransferHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransferObject" EntityType="Self.TransferObject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransferType" EntityType="Self.TransferType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Area_District" Association="Self.FK_Area_District">
       <End Role="District" EntitySet="District" />
       <End Role="Area" EntitySet="Area" />
@@ -869,6 +936,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_LineHistory_LineObject" Association="Self.FK_LineHistory_LineObject">
       <End Role="LineObject" EntitySet="LineObject" />
+      <End Role="LineHistory" EntitySet="LineHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineHistory_Status" Association="Self.FK_LineHistory_Status">
+      <End Role="Status" EntitySet="Status" />
       <End Role="LineHistory" EntitySet="LineHistory" />
     </AssociationSet>
     <AssociationSet Name="FK_LineObject_Map" Association="Self.FK_LineObject_Map">
@@ -943,7 +1014,7 @@
       <End Role="HallPhoto" EntitySet="HallPhoto" />
       <End Role="StationPhoto" EntitySet="StationPhoto" />
     </AssociationSet>
-    <AssociationSet Name="FK_StationPhoto_StationObject1" Association="Self.FK_StationPhoto_StationObject1">
+    <AssociationSet Name="FK_StationPhoto_StationObject" Association="Self.FK_StationPhoto_StationObject">
       <End Role="StationObject" EntitySet="StationObject" />
       <End Role="StationPhoto" EntitySet="StationPhoto" />
     </AssociationSet>
@@ -991,13 +1062,17 @@
       <End Role="State" EntitySet="State" />
       <End Role="TransferObject" EntitySet="TransferObject" />
     </AssociationSet>
-    <AssociationSet Name="FK_TransferObject_StationObject" Association="Self.FK_TransferObject_StationObject">
-      <End Role="StationObject" EntitySet="StationObject" />
-      <End Role="TransferObject" EntitySet="TransferObject" />
-    </AssociationSet>
     <AssociationSet Name="FK_TransferObject_StationObject1" Association="Self.FK_TransferObject_StationObject1">
       <End Role="StationObject" EntitySet="StationObject" />
       <End Role="TransferObject" EntitySet="TransferObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferObject_StationObject2" Association="Self.FK_TransferObject_StationObject2">
+      <End Role="StationObject" EntitySet="StationObject" />
+      <End Role="TransferObject" EntitySet="TransferObject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

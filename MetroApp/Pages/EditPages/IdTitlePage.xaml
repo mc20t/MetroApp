@@ -1,11 +1,11 @@
-﻿<Page x:Class="MetroApp.Pages.EditPages.IdTitlePage"
+﻿<Page x:Class="MetroApp.Pages.EditPages.IdNamePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MetroApp.Pages.EditPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="700"
       Title="Редактор: ">
 
     <Grid Background="Wheat">
@@ -16,23 +16,11 @@
             <RowDefinition Height="82*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="IdTitleTxt"
+        <TextBlock x:Name="TitleText"
                    Text="РОИим урцм уцп"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="25"/>
-
-        <Button Name="Info"
-                Height="30"
-                Width="30"
-                Margin="20"
-                Grid.RowSpan="2"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Right" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="Info_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/info.png"/>
-            </Button.Background>
-        </Button>
 
         <WrapPanel Grid.Row="1"
                    VerticalAlignment="Center" 
@@ -44,29 +32,41 @@
                     Width="59"
                     Height="30"
                     FontSize="18"
-                    Grid.Row="4" 
                     Click="btnExit_Click"/>
             <TextBlock Text="Поиск"
-                       Margin="70 0 10 0"
+                       Margin="30 0 10 0"
                        FontSize="18"/>
             <TextBox x:Name="txtSearch"
                      Width="150"
                      FontSize="18"
                      TextChanged="txtSearch_TextChanged"/>
             <TextBlock Text="Сортировка"
-                       Margin="70 0 10 0"
+                       Margin="30 0 10 0"
                        FontSize="18"/>
             <ComboBox x:Name="cmbSort"
                       Width="150"
-                      Margin="20 0"
                       SelectionChanged="cmbSort_SelectionChanged"/>
+            <Button Name="Info"
+                Height="30"
+                Width="30"
+                Margin="30 0 0 0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Foreground="{x:Null}"
+                BorderBrush="{x:Null}"
+                Click="Info_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/info.png"/>
+                </Button.Background>
+            </Button>
+
         </WrapPanel>
 
-        <ListView x:Name="lvIdTitle"
+        <ListView x:Name="lvTable"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  KeyUp="lvIdTitle_KeyUp"
-                  MouseRightButtonUp="lvIdTitle_RightButtonUp"
-                  MouseDoubleClick="lvIdTitle_MouseDoubleClick"
+                  KeyUp="lvTable_KeyUp"
+                  MouseRightButtonUp="lvTable_RightButtonUp"
+                  MouseDoubleClick="lvTable_MouseDoubleClick"
                   Grid.Row="2">
             <ListView.View>
                 <GridView>
@@ -83,7 +83,7 @@
         <WrapPanel Grid.Row="3"
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Center">
-            <TextBlock Text="Название"
+            <TextBlock Text="Название *"
                        Margin="70 0 10 0"
                        FontSize="18"/>
             <TextBox x:Name="NewNameTxtBox"

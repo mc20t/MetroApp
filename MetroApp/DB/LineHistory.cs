@@ -15,12 +15,10 @@ namespace MetroApp.DB
     public partial class LineHistory
     {
         public int ID { get; set; }
-        public short LineObjectID { get; set; }
         public string Name { get; set; }
         public string Number { get; set; }
         public string Abbreviation { get; set; }
         public string Color { get; set; }
-        public Nullable<byte> DecadeID { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Lenght { get; set; }
         public Nullable<short> TravelTimeInMinute { get; set; }
@@ -28,5 +26,6 @@ namespace MetroApp.DB
     
         public virtual Decade Decade { get; set; }
         public virtual LineObject LineObject { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

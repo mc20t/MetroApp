@@ -21,9 +21,6 @@ namespace MetroApp.DB
         }
     
         public short ID { get; set; }
-        public short Station_1 { get; set; }
-        public short Station_2 { get; set; }
-        public Nullable<byte> StateID { get; set; }
     
         public virtual State State { get; set; }
         public virtual StationObject StationObject { get; set; }

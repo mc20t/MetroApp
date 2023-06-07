@@ -12,11 +12,13 @@ namespace MetroApp.DB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class MetroDB_VKR_Entities : DbContext
+    public partial class MetroDB_VKR_Entities2 : DbContext
     {
-        public MetroDB_VKR_Entities()
-            : base("name=MetroDB_VKR_Entities")
+        public MetroDB_VKR_Entities2()
+            : base("name=MetroDB_VKR_Entities2")
         {
         }
     
@@ -44,6 +46,7 @@ namespace MetroApp.DB
         public virtual DbSet<PhotoAngle> PhotoAngle { get; set; }
         public virtual DbSet<Pillar> Pillar { get; set; }
         public virtual DbSet<Platform> Platform { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Span> Span { get; set; }
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<StationHistory> StationHistory { get; set; }
@@ -59,5 +62,16 @@ namespace MetroApp.DB
         public virtual DbSet<TransferHistory> TransferHistory { get; set; }
         public virtual DbSet<TransferObject> TransferObject { get; set; }
         public virtual DbSet<TransferType> TransferType { get; set; }
+        public virtual DbSet<User> User { get; set; }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_LineHistory")]
+        public virtual IQueryable<FUNC_LineHistory_Result> FUNC_LineHistory(Nullable<System.DateTime> dATE)
+        {
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_LineHistory_Result>("[MetroDB_VKR_Entities2].[FUNC_LineHistory](@DATE)", dATEParameter);
+        }
     }
 }
