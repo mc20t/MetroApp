@@ -8,7 +8,10 @@
         Icon="/logo.png"
         WindowStartupLocation="CenterScreen"
         Title="Ee wer weg r" Height="700" Width="500">
-    <Grid Background="Aqua">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/water_texture840.jpg" Stretch="Fill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="553*"/>
@@ -34,7 +37,7 @@
                     VerticalAlignment="Center"
                     Grid.Row="1"
                     Grid.Column="1"></StackPanel>
-        
+
         <Button x:Name="btnAddUpdate"
                 Width="150"
                 Height="50"

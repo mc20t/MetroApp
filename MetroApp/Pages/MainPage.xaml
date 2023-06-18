@@ -8,7 +8,11 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="Меню">
 
-    <Grid Background="White">
-        
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/mapj83282.jpg"
+                        Stretch="UniformToFill"/>
+        </Grid.Background>
+
     </Grid>
 </Page>

@@ -21,7 +21,8 @@ namespace MetroApp.DB
         public string Color { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Lenght { get; set; }
-        public Nullable<short> TravelTimeInMinute { get; set; }
+        public short TravelTimeInMinute { get; set; }
+        public bool IsRing { get; set; }
         public string Description { get; set; }
     
         public virtual Decade Decade { get; set; }

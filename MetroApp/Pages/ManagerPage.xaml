@@ -1,0 +1,380 @@
+﻿<Page x:Class="MetroApp.Pages.ManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MetroApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="Редактор">
+
+    <Grid Background="#FFE5E5E5">
+        <ScrollViewer>
+            <StackPanel>
+
+                <TextBlock Text="Регионы:"
+                           FontSize="25"
+                           Margin="10 20 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="MapBtn"
+                            Content="Карты"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Yellow"
+                            Click="MapBtn_Click"/>
+                    <Button x:Name="CityBtn"
+                            Content="Города"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Yellow"
+                            Click="CityBtn_Click"/>
+                    <Button x:Name="DistrictBtn"
+                            Content="Округа"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Yellow"
+                            Click="DistrictBtn_Click"/>
+                    <Button x:Name="AreaBtn"
+                            Content="Районы"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Yellow"
+                            Click="AreaBtn_Click"/>
+                    <Button x:Name="StationAreaBtn"
+                            Content="Станции Районы"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Yellow"
+                            Click="StationAreaBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Фото:"
+                           FontSize="25"
+                           Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="StationPhotoBtn"
+                            Content="Фото станций"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="GreenYellow"
+                            Click="StationPhotoBtn_Click"/>
+                    <Button x:Name="PhotoAngleBtn"
+                            Content="Ракурсы"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="GreenYellow"
+                            Click="PhotoAngleBtn_Click"/>
+                    <Button x:Name="HallPhotoBtn"
+                            Content="Помещения"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="GreenYellow"
+                            Click="HallPhotoBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Поезда и депо:"
+                           FontSize="25"
+                           Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="TrainSeriesBtn"
+                            Content="Серии поездов"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="DarkGray"
+                            Click="TrainSeriesBtn_Click"/>
+                    <Button x:Name="TrainBtn"
+                            Content="Поезда"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="DarkGray"
+                            Click="TrainBtn_Click"/>
+                    <Button x:Name="TrainLineBtn"
+                            Content="Поезда Линии"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="DarkGray"
+                            Click="TrainLineBtn_Click"/>
+                    <Button x:Name="DepotBtn"
+                            Content="Депо"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="DarkGray"
+                            Click="DepotBtn_Click"/>
+                    <Button x:Name="DepotLineBtn"
+                            Content="Депо Линии"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="DarkGray"
+                            Click="DepotLineBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Линии:"
+                           FontSize="25"
+                           Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="LineObjectBtn"
+                            Content="Объекты"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Foreground="White"
+                            Background="Green"
+                            Click="LineObjectBtn_Click"/>
+                    <Button x:Name="LineHistoryBtn"
+                            Content="Журнал изменений"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Foreground="White"
+                            Background="Green"
+                            Click="LineHistoryBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Станции:"
+                           FontSize="25"
+                           Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="StationObjectBtn"
+                            Content="Объекты"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="SkyBlue"
+                            Click="StationObjectBtn_Click"/>
+                    <Button x:Name="StationHistoryBtn"
+                            Content="Журнал изменений"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="SkyBlue"
+                            Click="StationHistoryBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Пересадки:"
+                           FontSize="25"
+                           Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="TransferObjectBtn"
+                            Content="Объекты"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Orange"
+                            Click="TransferObjectBtn_Click"/>
+                    <Button x:Name="TransferHistoryBtn"
+                            Content="Журнал изменений"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Orange"
+                            Click="TransferHistoryBtn_Click"/>
+                    <Button x:Name="TransferTypeBtn"
+                            Content="Типы пересадок"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Orange"
+                            Click="TransferTypeBtn_Click"/>
+                </WrapPanel>
+
+                <TextBlock Text="Технические характеристики станций:"
+                               FontSize="25"
+                               Margin="10 40 0 0"/>
+                <StackPanel>
+
+                    <TextBlock Text="Строительство:"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Margin="10 10 0 0"/>
+                    <WrapPanel>
+                        <Button x:Name="LocationBtn"
+                            Content="Расположения"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="LocationBtn_Click"/>
+                        <Button x:Name="ConstructionBtn"
+                            Content="Конструкции"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="ConstructionBtn_Click"/>
+                        <Button x:Name="PillarBtn"
+                            Content="Опоры"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="PillarBtn_Click"/>
+                        <Button x:Name="SpanBtn"
+                            Content="Пролёты"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="SpanBtn_Click"/>
+                        <Button x:Name="FloorBtn"
+                            Content="Перекрытия"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="FloorBtn_Click"/>
+                        <Button x:Name="StructComplexBtn"
+                            Content="Комплекс"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="StructComplexBtn_Click"/>
+                    </WrapPanel>
+
+                    <TextBlock Text="Другое:"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Margin="10 0 0 0"/>
+                    <WrapPanel>
+                        <Button x:Name="StatusBtn"
+                            Content="Состояния"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="StatusBtn_Click"/>
+                        <Button x:Name="DepthTypeBtn"
+                            Content="Глубина (цвет)"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="DepthTypeBtn_Click"/>
+                        <Button x:Name="PeculiarityBtn"
+                            Content="Особенности"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="PeculiarityBtn_Click"/>
+                        <Button x:Name="PeculiarityStationBtn"
+                            Content="Особенности Станции"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="PeculiarityStationBtn_Click"/>
+                        <Button x:Name="PlatformBtn"
+                            Content="Платформы"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="LightSlateGray"
+                            Click="PlatformBtn_Click"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <TextBlock Text="Пользовательские характеристики станций:"
+                               FontSize="25"
+                               Margin="10 40 0 0"/>
+                <WrapPanel>
+                    <Button x:Name="TrafficTypeBtn"
+                            Content="Пассажирпоток (цвет)"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Pink"
+                            Click="TrafficTypeBtn_Click"/>
+                    <Button x:Name="TrafficDescrBtn"
+                            Content="Пассажирпоток (опис.)"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Pink"
+                            Click="TrafficDescrBtn_Click"/>
+                    <Button x:Name="HousingCostBtn"
+                            Content="Стоимость жилья"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Pink"
+                            Click="HousingCostBtn_Click"/>
+                    <Button x:Name="DecadeBtn"
+                            Content="Десятилетия (цвет)"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Pink"
+                            Click="DecadeBtn_Click"/>
+                    <Button x:Name="StateBtn"
+                            Content="Государства"
+                            Width="200"
+                            Height="40"
+                            FontSize="18"
+                            Margin="10"
+                            Background="Pink"
+                            Click="StateBtn_Click"/>
+                </WrapPanel>
+
+                <Button x:Name="btnExit"
+                        Content="Выйти"
+                        Width="200"
+                        Height="40"
+                        FontSize="18"
+                        Margin="10"
+                        Background="Red"
+                        Foreground="White"
+                        Click="btnExit_Click"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -84,38 +84,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\AboutUsPage.xaml.cs">
-      <DependentUpon>AboutUsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\SignInWindow.xaml.cs">
-      <DependentUpon>SignInWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Pages\AboutUsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\LineListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StationInfoList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\StationListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\AddUpdateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="ClassHelper\GlobalVars.cs" />
-    <Compile Include="ClassHelper\SelectSQL.cs" />
     <Compile Include="DB\Area.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -143,7 +111,58 @@
     <Compile Include="DB\Floor.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\FUNC_LineDepotTrain_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_LineHistoryMap_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\FUNC_LineHistory_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToArea_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToCity_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToConstruction_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToDepthType_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToDistrict_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToFloor_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToHousingCost_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToLocation_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToMap_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToPeculiarity_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToPillar_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToPlatform_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToSpan_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToState_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\FUNC_ToTrafficType_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\HallPhoto.cs">
@@ -152,10 +171,19 @@
     <Compile Include="DB\HousingCost.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\LineDepotInfo_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\LineHistory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\LineInfo_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\LineObject.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\LineTrainInfo_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Location.cs">
@@ -189,9 +217,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Platform.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB\Role.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Span.cs">
@@ -239,17 +264,118 @@
     <Compile Include="DB\TransferType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\User.cs">
+    <Compile Include="DB\VW_AreaCountStations.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LineListPage.xaml.cs">
-      <DependentUpon>LineListPage.xaml</DependentUpon>
+    <Compile Include="DB\VW_CityCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StationInfoList.xaml.cs">
-      <DependentUpon>StationInfoList.xaml</DependentUpon>
+    <Compile Include="DB\VW_ConstructionCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StationListPage.xaml.cs">
-      <DependentUpon>StationListPage.xaml</DependentUpon>
+    <Compile Include="DB\VW_DepthTypeCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_DistrictCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_FloorCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_HousingCostCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_LocationCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_MapCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_PeculiarityCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_PillarCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_PlatformCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_SpanCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_StateCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\VW_TrafficTypeCountStations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AboutUsPage.xaml.cs">
+      <DependentUpon>AboutUsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManagerPage.xaml.cs">
+      <DependentUpon>ManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LineInfoPage.xaml.cs">
+      <DependentUpon>LineInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapInfoPage.xaml.cs">
+      <DependentUpon>MapInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapListPage.xaml.cs">
+      <DependentUpon>MapListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatStationPage.xaml.cs">
+      <DependentUpon>StatStationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\AboutUsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LineInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MapInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MapListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StationInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StationStatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatStationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="ClassHelper\SelectSQL.cs" />
+    <Compile Include="Pages\StationInfoPage.xaml.cs">
+      <DependentUpon>StationInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StationStatPage.xaml.cs">
+      <DependentUpon>StationStatPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddUpdateWindow.xaml.cs">
       <DependentUpon>AddUpdateWindow.xaml</DependentUpon>
@@ -268,67 +394,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IDIDPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IdMinMaxColorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IdTitleColorIdPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IdTitleAbbrPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IdTitleIdPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditPages\IdTitlePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\SignInWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Windows\SignUpWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\EditorListPage.xaml.cs">
       <DependentUpon>EditorListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditorPage.xaml.cs">
-      <DependentUpon>EditorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IDIDPage.xaml.cs">
-      <DependentUpon>IDIDPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IdMinMaxColorPage.xaml.cs">
-      <DependentUpon>IdMinMaxColorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IdTitleColorIdPage.xaml.cs">
-      <DependentUpon>IdTitleColorIdPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IdTitleAbbrPage.xaml.cs">
-      <DependentUpon>IdTitleAbbrPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IdTitleIdPage.xaml.cs">
-      <DependentUpon>IdTitleIdPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditPages\IdTitlePage.xaml.cs">
-      <DependentUpon>IdTitlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -357,7 +434,6 @@
     <None Include="DB\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
-    <None Include="Images\scale_1200.webp" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -379,7 +455,6 @@
   <ItemGroup>
     <Resource Include="logo.png" />
     <Resource Include="logo.ico" />
-    <Resource Include="Images\2257236_original.jpg" />
     <Resource Include="Images\Moscow_Metro_HDR1.jpg" />
     <Resource Include="Images\GL-ps%2887%29.jpg" />
     <Resource Include="Images\RIANjpg.jpg" />
@@ -396,7 +471,18 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\water_texture840.jpg" />
+    <Resource Include="Images\water_texture.png" />
+    <Resource Include="Images\water_texture840.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mapj83282.jpg" />
+    <Resource Include="Images\dark-map-1200.jpg" />
+    <Resource Include="Images\Back-Button-PNG-Image-Background.png" />
+    <Resource Include="Images\neon.jpg" />
+    <Resource Include="Images\img21.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DB\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -408,7 +494,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\water_texture840.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

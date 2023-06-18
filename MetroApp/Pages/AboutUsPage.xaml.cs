@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace MetroApp.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AboutUsPage.xaml
-    /// </summary>
     public partial class AboutUsPage : Page
     {
         public AboutUsPage()

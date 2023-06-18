@@ -25,13 +25,13 @@ namespace MetroApp.Pages
         List<string> listSortIDIntInt = new List<string>() { "По умолчанию", "По береговой", "По островной" };
 
         GridView gvCont = new GridView();
-
         GridViewColumn gvc1 = new GridViewColumn();
         GridViewColumn gvc2 = new GridViewColumn();
         GridViewColumn gvc3 = new GridViewColumn();
 
         string global;
         string[] addupd = new string[] { "", "" };
+        string[] add = new string[] { "", "" };
 
         public EditorListPage(string x)
         {
@@ -42,7 +42,7 @@ namespace MetroApp.Pages
 
             if (x == "Карты")
             {
-                GvcIdTxt();
+                GvcIdTxtTxt();
                 lvTable.ItemsSource = AppData.Context.Map.ToList();
                 Filter();
             }
@@ -154,6 +154,14 @@ namespace MetroApp.Pages
                 gvc3.Header = "Код";
                 cmbSort.ItemsSource = listSortIDNameCode;
             }
+            else if (global == "Карты")
+            {
+                gvc2.DisplayMemberBinding = new Binding("Name");
+                gvc2.Header = "Название";
+                gvc3.DisplayMemberBinding = new Binding("Logo");
+                gvc3.Header = "Логотип";
+                cmbSort.ItemsSource = listSortIDName;
+            }
             else if (global == "Платформы")
             {
                 gvc2.DisplayMemberBinding = new Binding("Unilateral");
@@ -162,6 +170,7 @@ namespace MetroApp.Pages
                 gvc3.Header = "Островная";
                 cmbSort.ItemsSource = listSortIDIntInt;
             }
+
             else
             {
                 gvc2.DisplayMemberBinding = new Binding("Title");
@@ -180,7 +189,7 @@ namespace MetroApp.Pages
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EditorPage());
+            NavigationService.Navigate(new ManagerPage());
         }
 
         private void lvTable_RightButtonUp(object sender, MouseButtonEventArgs e)
@@ -216,7 +225,7 @@ namespace MetroApp.Pages
 
         private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
         {
-            AddUpdateWindow AddUpdateWindow = new AddUpdateWindow(global, addupd);
+            AddUpdateWindow AddUpdateWindow = new AddUpdateWindow(global, add);
             this.Opacity = 0.2;
             AddUpdateWindow.btnAddUpdate.Content = "Добавить";
             AddUpdateWindow.tbTitle.Text = "Добавление";
@@ -245,6 +254,7 @@ namespace MetroApp.Pages
             {
                 editMap = lvTable.SelectedItem as Map;
                 addupd[0] = editMap.Name;
+                addupd[1] = editMap.Logo;
             }
             else if (lvTable.SelectedItem is PhotoAngle)
             {
@@ -321,12 +331,16 @@ namespace MetroApp.Pages
             AddUpdateWindow.ShowDialog();
             if (AddUpdateWindow.addubrReturn[0] != null)
             {
-                if (lvTable.SelectedItem is Map) editMap.Name = AddUpdateWindow.addubrReturn[0];
-                else if (lvTable.SelectedItem is PhotoAngle) editPhotoAngle.Name = AddUpdateWindow.addubrReturn[0];
+                if (lvTable.SelectedItem is PhotoAngle) editPhotoAngle.Name = AddUpdateWindow.addubrReturn[0];
                 else if (lvTable.SelectedItem is HallPhoto) editHallPhoto.Name = AddUpdateWindow.addubrReturn[0];
                 else if (lvTable.SelectedItem is TrainSeries) editTrainSeries.Name = AddUpdateWindow.addubrReturn[0];
                 else if (lvTable.SelectedItem is TransferType) editTransferType.Name = AddUpdateWindow.addubrReturn[0];
                 else if (lvTable.SelectedItem is TrafficDescription) editTrafficDescription.Name = AddUpdateWindow.addubrReturn[0];
+                else if (lvTable.SelectedItem is Map)
+                {
+                    editMap.Name = AddUpdateWindow.addubrReturn[0];
+                    editMap.Logo = AddUpdateWindow.addubrReturn[1];
+                }
                 else if (lvTable.SelectedItem is Depot)
                 {
                     editDepot.Name = AddUpdateWindow.addubrReturn[0];

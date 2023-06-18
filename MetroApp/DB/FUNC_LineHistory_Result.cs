@@ -13,15 +13,20 @@ namespace MetroApp.DB
     
     public partial class FUNC_LineHistory_Result
     {
-        public string LINE_NUMBER { get; set; }
-        public string LINE_NAME { get; set; }
-        public string LINE_ABBR { get; set; }
-        public Nullable<System.DateTime> LAST_MOD_DATE { get; set; }
-        public string LINE_COLOR { get; set; }
-        public Nullable<decimal> LINE_LENGTH { get; set; }
-        public Nullable<short> TRAVEL_TIME { get; set; }
-        public string LINE_STATUS { get; set; }
-        public string STATUS_COLOR { get; set; }
-        public string MAP { get; set; }
+        public string LineNumber { get; set; }
+        public string LineName { get; set; }
+        public string LineAbbreviation { get; set; }
+        public Nullable<System.DateTime> LastModDate { get; set; }
+        public string LineColor { get; set; }
+        public Nullable<decimal> LineLength { get; set; }
+        public Nullable<short> TravelTime { get; set; }
+        public string LineStatus { get; set; }
+        public string StatusColor { get; set; }
+        public Nullable<int> CountStations { get; set; }
+        public Nullable<int> CountStationsOpenYear { get; set; }
+        public Nullable<System.DateTime> LastStationsOpenDate { get; set; }
+        public Nullable<double> AvgDistBetwStations { get; set; }
+        public Nullable<double> AvgStationsDepth { get; set; }
+        public string LineMap { get; set; }
     }
 }

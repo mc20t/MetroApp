@@ -46,7 +46,6 @@ namespace MetroApp.DB
         public virtual DbSet<PhotoAngle> PhotoAngle { get; set; }
         public virtual DbSet<Pillar> Pillar { get; set; }
         public virtual DbSet<Platform> Platform { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Span> Span { get; set; }
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<StationHistory> StationHistory { get; set; }
@@ -62,7 +61,31 @@ namespace MetroApp.DB
         public virtual DbSet<TransferHistory> TransferHistory { get; set; }
         public virtual DbSet<TransferObject> TransferObject { get; set; }
         public virtual DbSet<TransferType> TransferType { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<VW_AreaCountStations> VW_AreaCountStations { get; set; }
+        public virtual DbSet<VW_CityCountStations> VW_CityCountStations { get; set; }
+        public virtual DbSet<VW_ConstructionCountStations> VW_ConstructionCountStations { get; set; }
+        public virtual DbSet<VW_DepthTypeCountStations> VW_DepthTypeCountStations { get; set; }
+        public virtual DbSet<VW_DistrictCountStations> VW_DistrictCountStations { get; set; }
+        public virtual DbSet<VW_FloorCountStations> VW_FloorCountStations { get; set; }
+        public virtual DbSet<VW_HousingCostCountStations> VW_HousingCostCountStations { get; set; }
+        public virtual DbSet<VW_LocationCountStations> VW_LocationCountStations { get; set; }
+        public virtual DbSet<VW_MapCountStations> VW_MapCountStations { get; set; }
+        public virtual DbSet<VW_PeculiarityCountStations> VW_PeculiarityCountStations { get; set; }
+        public virtual DbSet<VW_PillarCountStations> VW_PillarCountStations { get; set; }
+        public virtual DbSet<VW_PlatformCountStations> VW_PlatformCountStations { get; set; }
+        public virtual DbSet<VW_SpanCountStations> VW_SpanCountStations { get; set; }
+        public virtual DbSet<VW_StateCountStations> VW_StateCountStations { get; set; }
+        public virtual DbSet<VW_TrafficTypeCountStations> VW_TrafficTypeCountStations { get; set; }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_LineDepotTrain")]
+        public virtual IQueryable<FUNC_LineDepotTrain_Result> FUNC_LineDepotTrain(Nullable<System.DateTime> dATE)
+        {
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_LineDepotTrain_Result>("[MetroDB_VKR_Entities2].[FUNC_LineDepotTrain](@DATE)", dATEParameter);
+        }
     
         [DbFunction("MetroDB_VKR_Entities2", "FUNC_LineHistory")]
         public virtual IQueryable<FUNC_LineHistory_Result> FUNC_LineHistory(Nullable<System.DateTime> dATE)
@@ -72,6 +95,212 @@ namespace MetroApp.DB
                 new ObjectParameter("DATE", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_LineHistory_Result>("[MetroDB_VKR_Entities2].[FUNC_LineHistory](@DATE)", dATEParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_LineHistoryMap")]
+        public virtual IQueryable<FUNC_LineHistoryMap_Result> FUNC_LineHistoryMap(Nullable<System.DateTime> dATE, Nullable<byte> mAP)
+        {
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            var mAPParameter = mAP.HasValue ?
+                new ObjectParameter("MAP", mAP) :
+                new ObjectParameter("MAP", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_LineHistoryMap_Result>("[MetroDB_VKR_Entities2].[FUNC_LineHistoryMap](@DATE, @MAP)", dATEParameter, mAPParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToArea")]
+        public virtual IQueryable<FUNC_ToArea_Result> FUNC_ToArea(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToArea_Result>("[MetroDB_VKR_Entities2].[FUNC_ToArea](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToCity")]
+        public virtual IQueryable<FUNC_ToCity_Result> FUNC_ToCity(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToCity_Result>("[MetroDB_VKR_Entities2].[FUNC_ToCity](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToConstruction")]
+        public virtual IQueryable<FUNC_ToConstruction_Result> FUNC_ToConstruction(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToConstruction_Result>("[MetroDB_VKR_Entities2].[FUNC_ToConstruction](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToDepthType")]
+        public virtual IQueryable<FUNC_ToDepthType_Result> FUNC_ToDepthType(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToDepthType_Result>("[MetroDB_VKR_Entities2].[FUNC_ToDepthType](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToDistrict")]
+        public virtual IQueryable<FUNC_ToDistrict_Result> FUNC_ToDistrict(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToDistrict_Result>("[MetroDB_VKR_Entities2].[FUNC_ToDistrict](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToFloor")]
+        public virtual IQueryable<FUNC_ToFloor_Result> FUNC_ToFloor(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToFloor_Result>("[MetroDB_VKR_Entities2].[FUNC_ToFloor](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToHousingCost")]
+        public virtual IQueryable<FUNC_ToHousingCost_Result> FUNC_ToHousingCost(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToHousingCost_Result>("[MetroDB_VKR_Entities2].[FUNC_ToHousingCost](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToLocation")]
+        public virtual IQueryable<FUNC_ToLocation_Result> FUNC_ToLocation(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToLocation_Result>("[MetroDB_VKR_Entities2].[FUNC_ToLocation](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToMap")]
+        public virtual IQueryable<FUNC_ToMap_Result> FUNC_ToMap(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToMap_Result>("[MetroDB_VKR_Entities2].[FUNC_ToMap](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToPeculiarity")]
+        public virtual IQueryable<FUNC_ToPeculiarity_Result> FUNC_ToPeculiarity(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToPeculiarity_Result>("[MetroDB_VKR_Entities2].[FUNC_ToPeculiarity](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToPillar")]
+        public virtual IQueryable<FUNC_ToPillar_Result> FUNC_ToPillar(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToPillar_Result>("[MetroDB_VKR_Entities2].[FUNC_ToPillar](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToPlatform")]
+        public virtual IQueryable<FUNC_ToPlatform_Result> FUNC_ToPlatform(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToPlatform_Result>("[MetroDB_VKR_Entities2].[FUNC_ToPlatform](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToSpan")]
+        public virtual IQueryable<FUNC_ToSpan_Result> FUNC_ToSpan(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToSpan_Result>("[MetroDB_VKR_Entities2].[FUNC_ToSpan](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToState")]
+        public virtual IQueryable<FUNC_ToState_Result> FUNC_ToState(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToState_Result>("[MetroDB_VKR_Entities2].[FUNC_ToState](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "FUNC_ToTrafficType")]
+        public virtual IQueryable<FUNC_ToTrafficType_Result> FUNC_ToTrafficType(Nullable<byte> i)
+        {
+            var iParameter = i.HasValue ?
+                new ObjectParameter("I", i) :
+                new ObjectParameter("I", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FUNC_ToTrafficType_Result>("[MetroDB_VKR_Entities2].[FUNC_ToTrafficType](@I)", iParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "LineDepotInfo")]
+        public virtual IQueryable<LineDepotInfo_Result> LineDepotInfo(Nullable<byte> lINE, Nullable<System.DateTime> dATE)
+        {
+            var lINEParameter = lINE.HasValue ?
+                new ObjectParameter("LINE", lINE) :
+                new ObjectParameter("LINE", typeof(byte));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LineDepotInfo_Result>("[MetroDB_VKR_Entities2].[LineDepotInfo](@LINE, @DATE)", lINEParameter, dATEParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "LineInfo")]
+        public virtual IQueryable<LineInfo_Result> LineInfo(Nullable<byte> lINE, Nullable<System.DateTime> dATE)
+        {
+            var lINEParameter = lINE.HasValue ?
+                new ObjectParameter("LINE", lINE) :
+                new ObjectParameter("LINE", typeof(byte));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LineInfo_Result>("[MetroDB_VKR_Entities2].[LineInfo](@LINE, @DATE)", lINEParameter, dATEParameter);
+        }
+    
+        [DbFunction("MetroDB_VKR_Entities2", "LineTrainInfo")]
+        public virtual IQueryable<LineTrainInfo_Result> LineTrainInfo(Nullable<byte> lINE, Nullable<System.DateTime> dATE)
+        {
+            var lINEParameter = lINE.HasValue ?
+                new ObjectParameter("LINE", lINE) :
+                new ObjectParameter("LINE", typeof(byte));
+    
+            var dATEParameter = dATE.HasValue ?
+                new ObjectParameter("DATE", dATE) :
+                new ObjectParameter("DATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LineTrainInfo_Result>("[MetroDB_VKR_Entities2].[LineTrainInfo](@LINE, @DATE)", lINEParameter, dATEParameter);
         }
     }
 }

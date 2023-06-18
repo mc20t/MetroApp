@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\alexe\Documents\GitHub\MetroApp\MetroApp\App.xaml
-16-1271025657
+131771885041
 2-1714945715
-65-187894224
+94-1186978136
 20577213431
-Pages\AboutUsPage.xaml;Pages\LineListPage.xaml;Pages\StationInfoList.xaml;Pages\StationListPage.xaml;Windows\AddUpdateWindow.xaml;MainWindow.xaml;Pages\EditorListPage.xaml;Pages\EditorPage.xaml;Pages\EditPages\IDIDPage.xaml;Pages\EditPages\IdMinMaxColorPage.xaml;Pages\EditPages\IdTitleColorIdPage.xaml;Pages\EditPages\IdTitleAbbrPage.xaml;Pages\EditPages\IdTitleIdPage.xaml;Pages\EditPages\IdTitlePage.xaml;Pages\MainPage.xaml;Windows\SignInWindow.xaml;
+Pages\AboutUsPage.xaml;Pages\ManagerPage.xaml;Pages\LineInfoPage.xaml;Pages\MapInfoPage.xaml;Pages\MapListPage.xaml;Pages\StationInfoPage.xaml;Pages\StationStatPage.xaml;Pages\StatStationPage.xaml;Windows\AddUpdateWindow.xaml;MainWindow.xaml;Pages\EditorListPage.xaml;Pages\MainPage.xaml;Windows\SignUpWindow.xaml;
 
 True
 

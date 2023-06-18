@@ -15,6 +15,7 @@ using MetroApp.Pages;
 using MetroApp.DB;
 using MetroApp.ClassHelper;
 using System.Xml.Linq;
+using System.IO;
 
 namespace MetroApp
 {
@@ -28,16 +29,17 @@ namespace MetroApp
         TextBlock tbAbbr = new TextBlock();
         TextBox NewFirstTxtBox = new TextBox { BorderBrush = Brushes.Gray };
         TextBox NewSecondTxtBox = new TextBox { BorderBrush = Brushes.Gray };
+        Button NewPhotoBtn = new Button();
 
 
         public AddUpdateWindow(string x, string[] s)
         {
             InitializeComponent();
             global = x;
-            if (x == "Карты" || x == "Ракурсы" || x == "Помещения" ||
+            if (x == "Ракурсы" || x == "Помещения" ||
                 x == "Серии поездов" || x == "Типы пересадкок" || x == "Пассажирпоток (описание)")
                 SetIdTxt(s);
-            else if (x == "Депо" || x == "Конструкции" || x == "Пролёты" ||
+            else if (x == "Карты" || x == "Депо" || x == "Конструкции" || x == "Пролёты" ||
                      x == "Перекрытия" || x == "Особенности" || x == "Платформы")
                 SetIdTxtTxt(s);
         }
@@ -74,6 +76,7 @@ namespace MetroApp
             tbAbbr.HorizontalAlignment = HorizontalAlignment.Right;
             if (global == "Депо") tbAbbr.Text = "Код*";
             else if (global == "Платформы") tbAbbr.Text = "Островная*";
+            else if (global == "Карты") tbAbbr.Text = "Логотип*";
             else tbAbbr.Text = "Аббревиатура*";
             StPanText.Children.Add(tbAbbr);
 
@@ -82,15 +85,15 @@ namespace MetroApp
             NewFirstTxtBox.Margin = new Thickness(5);
             NewFirstTxtBox.HorizontalAlignment = HorizontalAlignment.Left;
             StPanTxtBox.Children.Add(NewFirstTxtBox);
+            NewFirstTxtBox.Text = s[0];
 
             NewSecondTxtBox.FontSize = 25;
             NewSecondTxtBox.Width = 200;
             NewSecondTxtBox.Margin = new Thickness(5);
             NewSecondTxtBox.HorizontalAlignment = HorizontalAlignment.Left;
             StPanTxtBox.Children.Add(NewSecondTxtBox);
-
-            NewFirstTxtBox.Text = s[0];
             NewSecondTxtBox.Text = s[1];
+
             format = "IdTextText";
         }
 
@@ -133,12 +136,16 @@ namespace MetroApp
                     flagOne = ClassHelper.Validation.IsTintValid(NewFirstTxtBox.Text);
                     flagTwo = ClassHelper.Validation.IsTintValid(NewSecondTxtBox.Text);
                 }
+                else if (global == "Карты")
+                {
+                    flagOne = ClassHelper.Validation.IsNameValid(NewFirstTxtBox.Text);
+                    flagTwo = ClassHelper.Validation.IsLinkValid(NewSecondTxtBox.Text);
+                }
                 else
                 {
                     flagOne = ClassHelper.Validation.IsNameValid(NewFirstTxtBox.Text);
                     flagTwo = ClassHelper.Validation.IsAbbrValid(NewSecondTxtBox.Text);
                 }
-                
                 if (flagOne && flagTwo)
                 {
                     NewFirstTxtBox.BorderBrush = ok;
@@ -170,8 +177,10 @@ namespace MetroApp
                 {
                     if (global == "Карты")
                     {
-                        Map newObj = new Map { Name = NewFirstTxtBox.Text };
-                        AppData.Context.Map.Add(newObj);
+                        Map newMap = new Map();
+                        newMap.Name = NewFirstTxtBox.Text;
+                        newMap.Logo = NewSecondTxtBox.Text;
+                        AppData.Context.Map.Add(newMap);
                     }
                     else if (global == "Ракурсы")
                     {

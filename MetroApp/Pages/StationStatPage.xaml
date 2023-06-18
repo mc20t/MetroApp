@@ -1,0 +1,417 @@
+﻿<Page x:Class="MetroApp.Pages.StationStatPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MetroApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="680" d:DesignWidth="1000"
+      Title="Статистика">
+
+    <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="593*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Статистика по станциям"
+                   FontSize="40"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+        <Button x:Name="btnExit"
+                    Margin="30,0,0,0"
+                    Content="Назад"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Width="60"
+                    Height="30"
+                    FontSize="18"
+                    Click="btnExit_Click"/>
+
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Районы">
+                <Grid Background="#FFE5E5E5">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="Районы"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvArea"
+                                      MouseLeftButtonUp="lvArea_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Район"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Area}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                        <GridViewColumn Header="Округ"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding District}"/>
+                                        <GridViewColumn Header="Город"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding City}"/>
+                                        <GridViewColumn Header="Карта"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Map}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Округи"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvDistrict"
+                                      MouseLeftButtonUp="lvDistrict_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Округ"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding District}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                        <GridViewColumn Header="Количество районов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountAreas}"/>
+                                        <GridViewColumn Header="Город"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding City}"/>
+                                        <GridViewColumn Header="Карта"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Map}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Города"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvCity"
+                                      MouseLeftButtonUp="lvCity_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Город"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding City}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                        <GridViewColumn Header="Количество районов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountAreas}"/>
+                                        <GridViewColumn Header="Количество округов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountDistricts}"/>
+                                        <GridViewColumn Header="Карта"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Map}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Карты"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvMap"
+                                      MouseLeftButtonUp="lvMap_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Карта"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Map}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                        <GridViewColumn Header="Количество районов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountAreas}"/>
+                                        <GridViewColumn Header="Количество округов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountDistricts}"/>
+                                        <GridViewColumn Header="Количество городов"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountCities}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Технические характеристики">
+                <Grid Background="#FFE5E5E5">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="Диапозон глубины"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvDepthType"
+                                      MouseLeftButtonUp="lvDepthType_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="От м"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Minimum}"/>
+                                        <GridViewColumn Header="До м"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Maximum}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Особенности"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvPeculiarity"
+                                      MouseLeftButtonUp="lvPeculiarity_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Особенность"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Peculiarity}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Строительство">
+                <Grid Background="#FFE5E5E5">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="Расположение"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvLocation"
+                                      MouseLeftButtonUp="lvLocation_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Расположение"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Location}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Конструкция"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvConstruction"
+                                      MouseLeftButtonUp="lvConstruction_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Конструкция"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Construction}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Перекрытия"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvFloor"
+                                      MouseLeftButtonUp="lvFloor_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Перекрытия"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Floor}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Опоры"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvPillar"
+                                      MouseLeftButtonUp="lvPillar_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Опоры"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Pillar}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Пролёты"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvSpan"
+                                      MouseLeftButtonUp="lvSpan_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Пролёты"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Span}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Платформы"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvPlatform"
+                                      MouseLeftButtonUp="lvPlatform_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Береговые"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Unilateral}"/>
+                                        <GridViewColumn Header="Островные"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Bilateral}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Другое">
+                <Grid Background="#FFE5E5E5">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="Диапозон загруженности"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvTrafficType"
+                                      MouseLeftButtonUp="lvTrafficType_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="От тыс. чел./сут."
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Minimum}"/>
+                                        <GridViewColumn Header="До тыс. чел./сут."
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Maximum}"/>
+                                        <GridViewColumn Header="Описание"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding TrafficDescription}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Ценовой диапозон"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvHousingCost"
+                                      MouseLeftButtonUp="lvHousingCost_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="От тыс. руб./м2"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Minimum}"/>
+                                        <GridViewColumn Header="До тыс. руб./м2"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding Maximum}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                            Width="auto"
+                                            DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <TextBlock Text="Государства"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 20 0 5"
+                                       FontSize="20"/>
+                            <ListView x:Name="lvState"
+                                      MouseLeftButtonUp="lvState_MouseLeftButtonUp"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      Height="auto">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Название государства"
+                                                        Width="auto"
+                                                        DisplayMemberBinding="{Binding StateName}"/>
+                                        <GridViewColumn Header="Количество станций"
+                                                        Width="auto"
+                                                        DisplayMemberBinding="{Binding CountStations}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

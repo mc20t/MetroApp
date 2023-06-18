@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Хранилище MetroDB_VKRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Хранилище MetroDB_VKR_Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Area">
     <Key>
       <PropertyRef Name="ID" />
@@ -107,7 +107,8 @@
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="StatusID" Type="tinyint" Nullable="false" />
     <Property Name="Lenght" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-    <Property Name="TravelTimeInMinute" Type="smallint" />
+    <Property Name="TravelTimeInMinute" Type="smallint" Nullable="false" />
+    <Property Name="IsRing" Type="bit" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="LineObject">
@@ -132,6 +133,7 @@
     </Key>
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Logo" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="Peculiarity">
     <Key>
@@ -172,13 +174,6 @@
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Unilateral" Type="tinyint" Nullable="false" />
     <Property Name="Bilateral" Type="tinyint" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Span">
     <Key>
@@ -344,20 +339,198 @@
     <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="User">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_AreaCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_AreaCountStations">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="District" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+    <Property Name="District" Type="nvarchar" MaxLength="58" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Map" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_CityCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_CityCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
     </Key>
     <Property Name="ID" Type="tinyint" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="25" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="RoleID" Type="tinyint" Nullable="false" />
-    <Property Name="Photo" Type="nvarchar" MaxLength="500" />
-    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+    <Property Name="CountAreas" Type="int" />
+    <Property Name="CountDistricts" Type="int" />
+    <Property Name="Map" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_ConstructionCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_ConstructionCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Construction" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Construction" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_DepthTypeCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_DepthTypeCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Minimum" Type="decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="Maximum" Type="decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_DistrictCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_DistrictCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="District" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="District" Type="nvarchar" MaxLength="58" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+    <Property Name="CountAreas" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Map" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_FloorCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_FloorCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Floor" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Floor" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_HousingCostCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_HousingCostCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Minimum" Type="smallint" Nullable="false" />
+    <Property Name="Maximum" Type="smallint" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_LocationCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_LocationCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Location" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_MapCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_MapCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Map" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+    <Property Name="CountAreas" Type="int" />
+    <Property Name="CountDistricts" Type="int" />
+    <Property Name="CountCities" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_PeculiarityCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_PeculiarityCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Peculiarity" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Peculiarity" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_PillarCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_PillarCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Pillar" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pillar" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_PlatformCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_PlatformCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Unilateral" />
+      <PropertyRef Name="Bilateral" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unilateral" Type="tinyint" Nullable="false" />
+    <Property Name="Bilateral" Type="tinyint" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_SpanCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_SpanCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Span" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Span" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_StateCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_StateCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="StateName" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "MetroDB_VKR.dbo.VW_TrafficTypeCountStations" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="VW_TrafficTypeCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+      <PropertyRef Name="TrafficDescription" />
+    </Key>
+    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="Minimum" Type="tinyint" Nullable="false" />
+    <Property Name="Maximum" Type="tinyint" Nullable="false" />
+    <Property Name="TrafficDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountStations" Type="int" />
   </EntityType>
   <Association Name="FK_Area_District">
     <End Role="District" Type="Self.District" Multiplicity="1" />
@@ -839,38 +1012,282 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="RoleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <Function Name="FUNC_LineDepotTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="LineNumber" Type="nvarchar" MaxLength="5" />
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineAbbreviation" Type="nvarchar" MaxLength="10" />
+          <Property Name="LineColor" Type="char" MaxLength="7" />
+          <Property Name="LineStatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="StatusColor" Type="nchar" MaxLength="7" />
+          <Property Name="DepotName" Type="nvarchar" MaxLength="30" />
+          <Property Name="DepotCode" Type="nvarchar" MaxLength="7" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="TrainName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrainYear" Type="smallint" />
+          <Property Name="TrainPhoto" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrainSeries" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineMap" Type="nvarchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <Function Name="FUNC_LineHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DATE" Type="date" Mode="In" />
     <ReturnType>
       <CollectionType>
         <RowType>
-          <Property Name="LINE_NUMBER" Type="nvarchar" MaxLength="5" />
-          <Property Name="LINE_NAME" Type="nvarchar" MaxLength="50" />
-          <Property Name="LINE_ABBR" Type="nvarchar" MaxLength="10" />
-          <Property Name="LAST_MOD_DATE" Type="date" />
-          <Property Name="LINE_COLOR" Type="char" MaxLength="7" />
-          <Property Name="LINE_LENGTH" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="TRAVEL_TIME" Type="smallint" />
-          <Property Name="LINE_STATUS" Type="nvarchar" MaxLength="30" />
-          <Property Name="STATUS_COLOR" Type="nchar" MaxLength="7" />
-          <Property Name="MAP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LineNumber" Type="nvarchar" MaxLength="5" />
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineAbbreviation" Type="nvarchar" MaxLength="10" />
+          <Property Name="LastModDate" Type="date" />
+          <Property Name="LineColor" Type="char" MaxLength="7" />
+          <Property Name="LineLength" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="TravelTime" Type="smallint" />
+          <Property Name="LineStatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="StatusColor" Type="nchar" MaxLength="7" />
+          <Property Name="CountStations" Type="int" />
+          <Property Name="CountStationsOpenYear" Type="int" />
+          <Property Name="LastStationsOpenDate" Type="date" />
+          <Property Name="AvgDistBetwStations" Type="float" />
+          <Property Name="AvgStationsDepth" Type="float" />
+          <Property Name="LineMap" Type="nvarchar" MaxLength="50" Nullable="false" />
         </RowType>
       </CollectionType>
     </ReturnType>
   </Function>
-  <EntityContainer Name="Хранилище MetroDB_VKRModelContainer">
+  <Function Name="FUNC_LineHistoryMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <Parameter Name="MAP" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="LineNumber" Type="nvarchar" MaxLength="5" />
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineAbbreviation" Type="nvarchar" MaxLength="10" />
+          <Property Name="LastModDate" Type="date" />
+          <Property Name="LineColor" Type="char" MaxLength="7" />
+          <Property Name="LineLength" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="TravelTime" Type="smallint" />
+          <Property Name="LineStatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="StatusColor" Type="nchar" MaxLength="7" />
+          <Property Name="CountStations" Type="int" />
+          <Property Name="CountStationsOpenYear" Type="int" />
+          <Property Name="LastStationsOpenDate" Type="date" />
+          <Property Name="AvgDistBetwStations" Type="float" />
+          <Property Name="AvgStationsDepth" Type="float" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToConstruction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToDepthType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToDistrict" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToFloor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToHousingCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToPeculiarity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToPillar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToPlatform" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToSpan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_ToTrafficType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="I" Type="tinyint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="LineDepotInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LINE" Type="tinyint" Mode="In" />
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="DepotName" Type="nvarchar" MaxLength="30" />
+          <Property Name="DepotCode" Type="nvarchar" MaxLength="7" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="LineInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LINE" Type="tinyint" Mode="In" />
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="LineNumber" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="LineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LineAbbr" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LineColor" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="SelectedDate" Type="date" />
+          <Property Name="LineLength" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="TravelTime" Type="smallint" Nullable="false" />
+          <Property Name="StatusTitle" Type="nvarchar" MaxLength="30" />
+          <Property Name="StatusColor" Type="nchar" MaxLength="7" />
+          <Property Name="LastModDate" Type="date" Nullable="false" />
+          <Property Name="CountStations" Type="int" />
+          <Property Name="LastStationsOpenDate" Type="date" />
+          <Property Name="AvgDistBetwStations" Type="float" />
+          <Property Name="AvgStationsDepth" Type="float" />
+          <Property Name="LineMap" Type="nvarchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="LineTrainInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LINE" Type="tinyint" Mode="In" />
+    <Parameter Name="DATE" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="TrainName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrainYear" Type="smallint" />
+          <Property Name="TrainPhoto" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrainSeries" Type="nvarchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="Хранилище MetroDB_VKR_ModelContainer">
     <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Construction" EntityType="Self.Construction" Schema="dbo" store:Type="Tables" />
@@ -891,7 +1308,6 @@
     <EntitySet Name="PhotoAngle" EntityType="Self.PhotoAngle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pillar" EntityType="Self.Pillar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Span" EntityType="Self.Span" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StationArea" EntityType="Self.StationArea" Schema="dbo" store:Type="Tables" />
@@ -909,7 +1325,128 @@
     <EntitySet Name="TransferHistory" EntityType="Self.TransferHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransferObject" EntityType="Self.TransferObject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransferType" EntityType="Self.TransferType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VW_AreaCountStations" EntityType="Self.VW_AreaCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_AreaCountStations].[ID] AS [ID], 
+    [VW_AreaCountStations].[Area] AS [Area], 
+    [VW_AreaCountStations].[CountStations] AS [CountStations], 
+    [VW_AreaCountStations].[District] AS [District], 
+    [VW_AreaCountStations].[City] AS [City], 
+    [VW_AreaCountStations].[Map] AS [Map]
+    FROM [dbo].[VW_AreaCountStations] AS [VW_AreaCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_CityCountStations" EntityType="Self.VW_CityCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_CityCountStations].[ID] AS [ID], 
+    [VW_CityCountStations].[City] AS [City], 
+    [VW_CityCountStations].[CountStations] AS [CountStations], 
+    [VW_CityCountStations].[CountAreas] AS [CountAreas], 
+    [VW_CityCountStations].[CountDistricts] AS [CountDistricts], 
+    [VW_CityCountStations].[Map] AS [Map]
+    FROM [dbo].[VW_CityCountStations] AS [VW_CityCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_ConstructionCountStations" EntityType="Self.VW_ConstructionCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_ConstructionCountStations].[ID] AS [ID], 
+    [VW_ConstructionCountStations].[Construction] AS [Construction], 
+    [VW_ConstructionCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_ConstructionCountStations] AS [VW_ConstructionCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DepthTypeCountStations" EntityType="Self.VW_DepthTypeCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DepthTypeCountStations].[ID] AS [ID], 
+    [VW_DepthTypeCountStations].[Minimum] AS [Minimum], 
+    [VW_DepthTypeCountStations].[Maximum] AS [Maximum], 
+    [VW_DepthTypeCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_DepthTypeCountStations] AS [VW_DepthTypeCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DistrictCountStations" EntityType="Self.VW_DistrictCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DistrictCountStations].[ID] AS [ID], 
+    [VW_DistrictCountStations].[District] AS [District], 
+    [VW_DistrictCountStations].[CountStations] AS [CountStations], 
+    [VW_DistrictCountStations].[CountAreas] AS [CountAreas], 
+    [VW_DistrictCountStations].[City] AS [City], 
+    [VW_DistrictCountStations].[Map] AS [Map]
+    FROM [dbo].[VW_DistrictCountStations] AS [VW_DistrictCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_FloorCountStations" EntityType="Self.VW_FloorCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_FloorCountStations].[ID] AS [ID], 
+    [VW_FloorCountStations].[Floor] AS [Floor], 
+    [VW_FloorCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_FloorCountStations] AS [VW_FloorCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_HousingCostCountStations" EntityType="Self.VW_HousingCostCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_HousingCostCountStations].[ID] AS [ID], 
+    [VW_HousingCostCountStations].[Minimum] AS [Minimum], 
+    [VW_HousingCostCountStations].[Maximum] AS [Maximum], 
+    [VW_HousingCostCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_HousingCostCountStations] AS [VW_HousingCostCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_LocationCountStations" EntityType="Self.VW_LocationCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_LocationCountStations].[ID] AS [ID], 
+    [VW_LocationCountStations].[Location] AS [Location], 
+    [VW_LocationCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_LocationCountStations] AS [VW_LocationCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_MapCountStations" EntityType="Self.VW_MapCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_MapCountStations].[ID] AS [ID], 
+    [VW_MapCountStations].[Map] AS [Map], 
+    [VW_MapCountStations].[CountStations] AS [CountStations], 
+    [VW_MapCountStations].[CountAreas] AS [CountAreas], 
+    [VW_MapCountStations].[CountDistricts] AS [CountDistricts], 
+    [VW_MapCountStations].[CountCities] AS [CountCities]
+    FROM [dbo].[VW_MapCountStations] AS [VW_MapCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_PeculiarityCountStations" EntityType="Self.VW_PeculiarityCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_PeculiarityCountStations].[ID] AS [ID], 
+    [VW_PeculiarityCountStations].[Peculiarity] AS [Peculiarity], 
+    [VW_PeculiarityCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_PeculiarityCountStations] AS [VW_PeculiarityCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_PillarCountStations" EntityType="Self.VW_PillarCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_PillarCountStations].[ID] AS [ID], 
+    [VW_PillarCountStations].[Pillar] AS [Pillar], 
+    [VW_PillarCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_PillarCountStations] AS [VW_PillarCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_PlatformCountStations" EntityType="Self.VW_PlatformCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_PlatformCountStations].[ID] AS [ID], 
+    [VW_PlatformCountStations].[Unilateral] AS [Unilateral], 
+    [VW_PlatformCountStations].[Bilateral] AS [Bilateral], 
+    [VW_PlatformCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_PlatformCountStations] AS [VW_PlatformCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_SpanCountStations" EntityType="Self.VW_SpanCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_SpanCountStations].[ID] AS [ID], 
+    [VW_SpanCountStations].[Span] AS [Span], 
+    [VW_SpanCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_SpanCountStations] AS [VW_SpanCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_StateCountStations" EntityType="Self.VW_StateCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_StateCountStations].[ID] AS [ID], 
+    [VW_StateCountStations].[StateName] AS [StateName], 
+    [VW_StateCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_StateCountStations] AS [VW_StateCountStations]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_TrafficTypeCountStations" EntityType="Self.VW_TrafficTypeCountStations" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_TrafficTypeCountStations].[ID] AS [ID], 
+    [VW_TrafficTypeCountStations].[Minimum] AS [Minimum], 
+    [VW_TrafficTypeCountStations].[Maximum] AS [Maximum], 
+    [VW_TrafficTypeCountStations].[TrafficDescription] AS [TrafficDescription], 
+    [VW_TrafficTypeCountStations].[CountStations] AS [CountStations]
+    FROM [dbo].[VW_TrafficTypeCountStations] AS [VW_TrafficTypeCountStations]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Area_District" Association="Self.FK_Area_District">
       <End Role="District" EntitySet="District" />
       <End Role="Area" EntitySet="Area" />
@@ -1069,10 +1606,6 @@
     <AssociationSet Name="FK_TransferObject_StationObject2" Association="Self.FK_TransferObject_StationObject2">
       <End Role="StationObject" EntitySet="StationObject" />
       <End Role="TransferObject" EntitySet="TransferObject" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

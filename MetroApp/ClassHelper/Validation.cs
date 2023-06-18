@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Threading.Tasks;
-using MetroApp.Pages.EditPages;
 using MetroApp.DB;
 
 namespace MetroApp.ClassHelper
@@ -52,6 +51,20 @@ namespace MetroApp.ClassHelper
             {
                 return false;
             }
+        }
+
+        public static bool IsLinkValid(string link)
+        {
+            if (link.Length < 1)
+            {
+                return false;
+            }
+            else if (link.Length > 500)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

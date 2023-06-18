@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Drawing;
 using System.ComponentModel;
 using System.Data;
@@ -26,44 +27,63 @@ namespace MetroApp
 {
     public partial class MainWindow : Window
     {
+        public bool admin;
 
         public MainWindow()
         {
             InitializeComponent();
             mainFrame.Content = new MainPage();
-            ActivityTitle.Text = Menu.Content.ToString();
-        }
-
-        private void Editor_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.Content = new EditorPage();
-            ActivityTitle.Text = Editor.Content.ToString();
         }
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = new MainPage();
-            ActivityTitle.Text = Menu.Content.ToString();
-        }
-
-        private void btnLineList_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.Content = new LineListPage();
-            ActivityTitle.Text = btnLineList.Content.ToString() + " метро";
         }
 
         private void btnAboutUs_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = new AboutUsPage();
-            ActivityTitle.Text = btnAboutUs.Content.ToString();
         }
 
-        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        private void btnEditor_Click(object sender, RoutedEventArgs e)
         {
-            SignInWindow signInWindow = new SignInWindow();
-            this.Opacity = 0.2;
-            signInWindow.ShowDialog();
-            this.Opacity = 1;
+            SignUpWindow signUpWindow = new SignUpWindow();
+            ManagerPage managerPage = new ManagerPage();
+
+            string pathPsswrd = "C:/qwerty/psswrd.txt";
+            string pathValid = "C:/qwerty/valid.txt";
+            string checkPsswrd;
+            string checkValid;
+
+            using (StreamReader readerP = new StreamReader(pathPsswrd)) checkPsswrd = readerP.Read().ToString();
+            using (StreamReader readerV = new StreamReader(pathValid)) checkValid = readerV.Read().ToString();
+
+            if (checkPsswrd != checkValid)
+            {
+                this.Opacity = 0.2;
+                signUpWindow.ShowDialog();
+                this.Opacity = 1;
+                using (StreamReader readerP = new StreamReader(pathPsswrd)) checkPsswrd = readerP.Read().ToString();
+                using (StreamReader readerV = new StreamReader(pathValid)) checkValid = readerV.Read().ToString();
+                if (checkPsswrd == checkValid)
+                {
+                    mainFrame.Content = new ManagerPage();
+                }
+            }
+            else
+            {
+                mainFrame.Content = new ManagerPage();
+            }
+        }
+
+        private void btnMapList_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new MapListPage();
+        }
+
+        private void btnStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new StationStatPage();
         }
     }
 }

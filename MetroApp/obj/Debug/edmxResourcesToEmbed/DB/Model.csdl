@@ -1,16 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MetroDB_VKRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MetroDB_VKR_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="FUNC_LineDepotTrain_Result">
+    <Property Name="LineNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LineAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LineColor" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="LineStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StatusColor" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+    <Property Name="DepotName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DepotCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="TrainName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrainYear" Type="Int16" />
+    <Property Name="TrainPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TrainSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LineMap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
   <ComplexType Name="FUNC_LineHistory_Result">
-    <Property Name="LINE_NUMBER" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="LINE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LINE_ABBR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="LAST_MOD_DATE" Type="DateTime" />
-    <Property Name="LINE_COLOR" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
-    <Property Name="LINE_LENGTH" Type="Decimal" Precision="5" Scale="2" />
-    <Property Name="TRAVEL_TIME" Type="Int16" />
-    <Property Name="LINE_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="STATUS_COLOR" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
-    <Property Name="MAP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LineNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LineAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastModDate" Type="DateTime" />
+    <Property Name="LineColor" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="LineLength" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="TravelTime" Type="Int16" />
+    <Property Name="LineStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StatusColor" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="CountStationsOpenYear" Type="Int32" />
+    <Property Name="LastStationsOpenDate" Type="DateTime" />
+    <Property Name="AvgDistBetwStations" Type="Double" />
+    <Property Name="AvgStationsDepth" Type="Double" />
+    <Property Name="LineMap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_LineHistoryMap_Result">
+    <Property Name="LineNumber" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="LineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LineAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastModDate" Type="DateTime" />
+    <Property Name="LineColor" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="LineLength" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="TravelTime" Type="Int16" />
+    <Property Name="LineStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StatusColor" Type="String" MaxLength="7" FixedLength="true" Unicode="true" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="CountStationsOpenYear" Type="Int32" />
+    <Property Name="LastStationsOpenDate" Type="DateTime" />
+    <Property Name="AvgDistBetwStations" Type="Double" />
+    <Property Name="AvgStationsDepth" Type="Double" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToArea_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToCity_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToConstruction_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToDepthType_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToDistrict_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToFloor_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToHousingCost_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToLocation_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToMap_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToPeculiarity_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToPillar_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToPlatform_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToSpan_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToState_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FUNC_ToTrafficType_Result">
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
   </ComplexType>
   <EntityType Name="Area">
     <Key>
@@ -127,7 +210,8 @@
     <Property Name="Color" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Lenght" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-    <Property Name="TravelTimeInMinute" Type="Int16" />
+    <Property Name="TravelTimeInMinute" Type="Int16" Nullable="false" />
+    <Property Name="IsRing" Type="Boolean" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Decade" Relationship="Self.FK_LineHistory_Decade" FromRole="LineHistory" ToRole="Decade" />
     <NavigationProperty Name="LineObject" Relationship="Self.FK_LineHistory_LineObject" FromRole="LineHistory" ToRole="LineObject" />
@@ -160,6 +244,7 @@
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="City" Relationship="Self.FK_City_Map" FromRole="Map" ToRole="City" />
     <NavigationProperty Name="LineObject" Relationship="Self.FK_LineObject_Map" FromRole="Map" ToRole="LineObject" />
   </EntityType>
@@ -198,14 +283,6 @@
     <Property Name="Unilateral" Type="Byte" Nullable="false" />
     <Property Name="Bilateral" Type="Byte" Nullable="false" />
     <NavigationProperty Name="StationObject" Relationship="Self.FK_StationObject_Platform" FromRole="Platform" ToRole="StationObject" />
-  </EntityType>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
   </EntityType>
   <EntityType Name="Span">
     <Key>
@@ -373,20 +450,168 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TransferHistory" Relationship="Self.FK_TransferHistory_TransferType" FromRole="TransferType" ToRole="TransferHistory" />
   </EntityType>
-  <EntityType Name="User">
+  <EntityType Name="VW_AreaCountStations">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="District" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="District" Type="String" MaxLength="58" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_CityCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
     </Key>
     <Property Name="ID" Type="Byte" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="CountAreas" Type="Int32" />
+    <Property Name="CountDistricts" Type="Int32" />
+    <Property Name="Map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_ConstructionCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Construction" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Construction" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_DepthTypeCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Minimum" Type="Decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="Maximum" Type="Decimal" Precision="6" Scale="1" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_DistrictCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="District" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="58" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="CountAreas" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_FloorCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Floor" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Floor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_HousingCostCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Minimum" Type="Int16" Nullable="false" />
+    <Property Name="Maximum" Type="Int16" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_LocationCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Location" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_MapCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Map" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+    <Property Name="CountAreas" Type="Int32" />
+    <Property Name="CountDistricts" Type="Int32" />
+    <Property Name="CountCities" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_PeculiarityCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Peculiarity" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Peculiarity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_PillarCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Pillar" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pillar" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_PlatformCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Unilateral" />
+      <PropertyRef Name="Bilateral" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unilateral" Type="Byte" Nullable="false" />
+    <Property Name="Bilateral" Type="Byte" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_SpanCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Span" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Span" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_StateCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="StateName" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_TrafficTypeCountStations">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Minimum" />
+      <PropertyRef Name="Maximum" />
+      <PropertyRef Name="TrafficDescription" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" />
+    <Property Name="Minimum" Type="Byte" Nullable="false" />
+    <Property Name="Maximum" Type="Byte" Nullable="false" />
+    <Property Name="TrafficDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountStations" Type="Int32" />
   </EntityType>
   <Association Name="FK_Area_District">
     <End Role="District" Type="Self.District" Multiplicity="1" />
@@ -472,10 +697,6 @@
     <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
   </Association>
-  <Association Name="FK_User_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-  </Association>
   <Association Name="FK_StationObject_State">
     <End Role="State" Type="Self.State" Multiplicity="1" />
     <End Role="StationObject" Type="Self.StationObject" Multiplicity="*" />
@@ -560,7 +781,6 @@
     <EntitySet Name="PhotoAngle" EntityType="Self.PhotoAngle" />
     <EntitySet Name="Pillar" EntityType="Self.Pillar" />
     <EntitySet Name="Platform" EntityType="Self.Platform" />
-    <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="Span" EntityType="Self.Span" />
     <EntitySet Name="State" EntityType="Self.State" />
     <EntitySet Name="StationHistory" EntityType="Self.StationHistory" />
@@ -576,7 +796,21 @@
     <EntitySet Name="TransferHistory" EntityType="Self.TransferHistory" />
     <EntitySet Name="TransferObject" EntityType="Self.TransferObject" />
     <EntitySet Name="TransferType" EntityType="Self.TransferType" />
-    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="VW_AreaCountStations" EntityType="Self.VW_AreaCountStations" />
+    <EntitySet Name="VW_CityCountStations" EntityType="Self.VW_CityCountStations" />
+    <EntitySet Name="VW_ConstructionCountStations" EntityType="Self.VW_ConstructionCountStations" />
+    <EntitySet Name="VW_DepthTypeCountStations" EntityType="Self.VW_DepthTypeCountStations" />
+    <EntitySet Name="VW_DistrictCountStations" EntityType="Self.VW_DistrictCountStations" />
+    <EntitySet Name="VW_FloorCountStations" EntityType="Self.VW_FloorCountStations" />
+    <EntitySet Name="VW_HousingCostCountStations" EntityType="Self.VW_HousingCostCountStations" />
+    <EntitySet Name="VW_LocationCountStations" EntityType="Self.VW_LocationCountStations" />
+    <EntitySet Name="VW_MapCountStations" EntityType="Self.VW_MapCountStations" />
+    <EntitySet Name="VW_PeculiarityCountStations" EntityType="Self.VW_PeculiarityCountStations" />
+    <EntitySet Name="VW_PillarCountStations" EntityType="Self.VW_PillarCountStations" />
+    <EntitySet Name="VW_PlatformCountStations" EntityType="Self.VW_PlatformCountStations" />
+    <EntitySet Name="VW_SpanCountStations" EntityType="Self.VW_SpanCountStations" />
+    <EntitySet Name="VW_StateCountStations" EntityType="Self.VW_StateCountStations" />
+    <EntitySet Name="VW_TrafficTypeCountStations" EntityType="Self.VW_TrafficTypeCountStations" />
     <AssociationSet Name="FK_Area_District" Association="Self.FK_Area_District">
       <End Role="District" EntitySet="District" />
       <End Role="Area" EntitySet="Area" />
@@ -661,10 +895,6 @@
       <End Role="Platform" EntitySet="Platform" />
       <End Role="StationObject" EntitySet="StationObject" />
     </AssociationSet>
-    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="User" EntitySet="User" />
-    </AssociationSet>
     <AssociationSet Name="FK_StationObject_State" Association="Self.FK_StationObject_State">
       <End Role="State" EntitySet="State" />
       <End Role="StationObject" EntitySet="StationObject" />
@@ -729,8 +959,101 @@
       <End Role="LineObject" EntitySet="LineObject" />
       <End Role="Train" EntitySet="Train" />
     </AssociationSet>
-    <FunctionImport Name="FUNC_LineHistory" IsComposable="true" ReturnType="Collection(MetroDB_VKRModel.FUNC_LineHistory_Result)">
+    <FunctionImport Name="FUNC_LineDepotTrain" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_LineDepotTrain_Result)">
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_LineHistory" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_LineHistory_Result)">
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_LineHistoryMap" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_LineHistoryMap_Result)">
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+      <Parameter Name="MAP" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToArea" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToArea_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToCity" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToCity_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToConstruction" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToConstruction_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToDepthType" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToDepthType_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToDistrict" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToDistrict_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToFloor" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToFloor_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToHousingCost" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToHousingCost_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToLocation" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToLocation_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToMap" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToMap_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToPeculiarity" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToPeculiarity_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToPillar" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToPillar_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToPlatform" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToPlatform_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToSpan" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToSpan_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToState" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToState_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="FUNC_ToTrafficType" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.FUNC_ToTrafficType_Result)">
+      <Parameter Name="I" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="LineDepotInfo" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.LineDepotInfo_Result)">
+      <Parameter Name="LINE" Mode="In" Type="Byte" />
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="LineInfo" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.LineInfo_Result)">
+      <Parameter Name="LINE" Mode="In" Type="Byte" />
+      <Parameter Name="DATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="LineTrainInfo" IsComposable="true" ReturnType="Collection(MetroDB_VKR_Model.LineTrainInfo_Result)">
+      <Parameter Name="LINE" Mode="In" Type="Byte" />
       <Parameter Name="DATE" Mode="In" Type="DateTime" />
     </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="LineDepotInfo_Result">
+    <Property Type="String" Name="DepotName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="7" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="LineInfo_Result">
+    <Property Type="String" Name="LineNumber" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="LineName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LineAbbr" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="LineColor" Nullable="false" MaxLength="7" />
+    <Property Type="DateTime" Name="SelectedDate" Nullable="true" Precision="10" />
+    <Property Type="Decimal" Name="LineLength" Nullable="false" Precision="5" Scale="2" />
+    <Property Type="Int16" Name="TravelTime" Nullable="false" />
+    <Property Type="String" Name="StatusTitle" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="StatusColor" Nullable="true" MaxLength="7" />
+    <Property Type="DateTime" Name="LastModDate" Nullable="false" Precision="10" />
+    <Property Type="Int32" Name="CountStations" Nullable="true" />
+    <Property Type="DateTime" Name="LastStationsOpenDate" Nullable="true" Precision="10" />
+    <Property Type="Double" Name="AvgDistBetwStations" Nullable="true" />
+    <Property Type="Double" Name="AvgStationsDepth" Nullable="true" />
+    <Property Type="String" Name="LineMap" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="LineTrainInfo_Result">
+    <Property Type="String" Name="TrainName" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="TrainYear" Nullable="true" />
+    <Property Type="String" Name="TrainPhoto" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="TrainSeries" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>
